@@ -6,16 +6,17 @@
 //
 //
 
-#include <iostream>
 #include <allegro5/allegro.h>
+#include <allegro5/allegro_image.h>
 #include <allegro5/allegro_native_dialog.h>
 #include <allegro5/allegro_primitives.h>
+#include <iostream>
 
 using namespace std;
 
 #define DEBUGINFO 0
 
-#define BOARD_GRID_SIZE 10
+#define BOARD_GRID_SIZE 8
 #define BOARD_SIZE 800
 
 #define CELL_COLOR_ALIVE al_map_rgb(255, 102, 0)
@@ -29,10 +30,11 @@ int draw();
 int update();
 int checkNeighbors(int x, int y);
 
-int main (int argc, char **argv) {
-    ALLEGRO_DISPLAY *display = NULL;
-    ALLEGRO_KEYBOARD_STATE state;
+ALLEGRO_BITMAP *image = NULL;
+ALLEGRO_DISPLAY *display = NULL;
+ALLEGRO_KEYBOARD_STATE state;
 
+int main (int argc, char **argv) {
     
     if (!al_init()){
         al_show_native_message_box(display, "Error", "Error", "Failed to initialize allegro!", NULL, ALLEGRO_MESSAGEBOX_ERROR);
@@ -41,6 +43,11 @@ int main (int argc, char **argv) {
     
     if (!al_init_primitives_addon()) {
         al_show_native_message_box(display, "Error", "Error", "Failed to initiliaze al_init_primitives_addon!", NULL, ALLEGRO_MESSAGEBOX_ERROR);
+        return 0;
+    }
+    
+    if(!al_init_image_addon()){
+        al_show_native_message_box(display, "Error", "Error", "Failed to initialize display!", NULL, ALLEGRO_MESSAGEBOX_ERROR);
         return 0;
     }
     
@@ -53,6 +60,13 @@ int main (int argc, char **argv) {
     
     if (!display) {
         al_show_native_message_box(display, "Error", "Error", "Failed to initialize allegro!", NULL, ALLEGRO_MESSAGEBOX_ERROR);
+        return 0;
+    }
+    
+    image = al_load_bitmap("creep.png");
+    
+    if(!image) {
+        al_show_native_message_box(display, "Error", "Error", "Failed to load image!", NULL, ALLEGRO_MESSAGEBOX_ERROR);
         return 0;
     }
    
@@ -71,7 +85,7 @@ int main (int argc, char **argv) {
         update();
         draw();
         al_get_keyboard_state(&state);
-        al_rest(1);
+        al_rest(.5);
     }
     
     al_destroy_display(display);
@@ -100,9 +114,33 @@ int draw()
     for (int x = 0; x < BOARD_SIZE / BOARD_GRID_SIZE; x++) {
         for (int y = 0; y < BOARD_SIZE / BOARD_GRID_SIZE; y++) {
             if (grid[x][y] == 1){
-                al_draw_filled_rectangle(0 + (x * BOARD_GRID_SIZE), 0 + (y * BOARD_GRID_SIZE), BOARD_GRID_SIZE + (x * BOARD_GRID_SIZE), BOARD_GRID_SIZE + (y * BOARD_GRID_SIZE), CELL_COLOR_ALIVE);
+                
+                // Scalable (web-scale lol) images of creeps for the cells
+                
+                al_draw_scaled_bitmap( image,
+                    0, 0,                                       // source origin
+                    al_get_bitmap_width ( image ),              // source width
+                    al_get_bitmap_height ( image),              // source height
+                    x * BOARD_GRID_SIZE, y * BOARD_GRID_SIZE,   // target origin
+                    8, 8,                                       // target dimensions
+                    0                                           // flags
+                );
+                
+                // First attempt to use an image for the cells, non-scalable
+                /*
+                al_draw_bitmap( image,
+                    x * BOARD_GRID_SIZE,     // x-coordinate
+                    y * BOARD_GRID_SIZE,     // y-coordinate
+                    0                        // flags
+                    );
+                */
+                
+                
+                // original draw rectangle function that was used until I moved to an image
+                // al_draw_filled_rectangle(0 + (x * BOARD_GRID_SIZE), 0 + (y * BOARD_GRID_SIZE), BOARD_GRID_SIZE + (x * BOARD_GRID_SIZE), BOARD_GRID_SIZE + (y * BOARD_GRID_SIZE), CELL_COLOR_ALIVE);
+                
             } else {
-                al_draw_filled_rectangle(0 + (x * BOARD_GRID_SIZE), 0 + (y * BOARD_GRID_SIZE), BOARD_GRID_SIZE + (x * BOARD_GRID_SIZE), BOARD_GRID_SIZE + (y * BOARD_GRID_SIZE), CELL_COLOR_DEAD);
+                 al_draw_filled_rectangle(0 + (x * BOARD_GRID_SIZE), 0 + (y * BOARD_GRID_SIZE), BOARD_GRID_SIZE + (x * BOARD_GRID_SIZE), BOARD_GRID_SIZE + (y * BOARD_GRID_SIZE), CELL_COLOR_DEAD);
             }
         }
     }

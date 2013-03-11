@@ -28,6 +28,7 @@
 		C25A3D4B16EE6502002E8759 /* AllegroMemfile-5.1.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = C25A3D3516EE64FB002E8759 /* AllegroMemfile-5.1.framework */; };
 		C25A3D4C16EE6502002E8759 /* AllegroPhysfs-5.1.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = C25A3D3616EE64FB002E8759 /* AllegroPhysfs-5.1.framework */; };
 		C25A3D4D16EE6502002E8759 /* AllegroPrimitives-5.1.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = C25A3D3716EE64FB002E8759 /* AllegroPrimitives-5.1.framework */; };
+		C25A3D5016EE7D3B002E8759 /* creep.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = C25A3D4F16EE7D3B002E8759 /* creep.png */; };
 		C2AE304716EE2AC300B54BF5 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2AE304616EE2AC300B54BF5 /* Cocoa.framework */; };
 		C2AE306516EE2AC300B54BF5 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2AE306416EE2AC300B54BF5 /* SenTestingKit.framework */; };
 		C2AE306616EE2AC300B54BF5 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2AE304616EE2AC300B54BF5 /* Cocoa.framework */; };
@@ -45,6 +46,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		C25A3D4E16EE7D1A002E8759 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 7;
+			files = (
+				C25A3D5016EE7D3B002E8759 /* creep.png in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C2AE307816EE2AD900B54BF5 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -79,6 +90,7 @@
 		C25A3D3516EE64FB002E8759 /* AllegroMemfile-5.1.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "AllegroMemfile-5.1.framework"; path = "../../../../Library/Frameworks/AllegroMemfile-5.1.framework"; sourceTree = "<group>"; };
 		C25A3D3616EE64FB002E8759 /* AllegroPhysfs-5.1.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "AllegroPhysfs-5.1.framework"; path = "../../../../Library/Frameworks/AllegroPhysfs-5.1.framework"; sourceTree = "<group>"; };
 		C25A3D3716EE64FB002E8759 /* AllegroPrimitives-5.1.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "AllegroPrimitives-5.1.framework"; path = "../../../../Library/Frameworks/AllegroPrimitives-5.1.framework"; sourceTree = "<group>"; };
+		C25A3D4F16EE7D3B002E8759 /* creep.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = creep.png; path = GameOfLife/creep.png; sourceTree = "<group>"; };
 		C2AE304316EE2AC300B54BF5 /* GameOfLife.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GameOfLife.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2AE304616EE2AC300B54BF5 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		C2AE304916EE2AC300B54BF5 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -123,6 +135,7 @@
 		C2AE303816EE2AB900B54BF5 = {
 			isa = PBXGroup;
 			children = (
+				C25A3D4F16EE7D3B002E8759 /* creep.png */,
 				C25A3D2D16EE64FB002E8759 /* Allegro-5.1.framework */,
 				C25A3D2E16EE64FB002E8759 /* AllegroAcodec-5.1.framework */,
 				C25A3D2F16EE64FB002E8759 /* AllegroAudio-5.1.framework */,
@@ -196,6 +209,7 @@
 				C2AE304016EE2AC300B54BF5 /* Frameworks */,
 				C2AE304116EE2AC300B54BF5 /* Resources */,
 				C2AE307816EE2AD900B54BF5 /* CopyFiles */,
+				C25A3D4E16EE7D1A002E8759 /* CopyFiles */,
 			);
 			buildRules = (
 			);
