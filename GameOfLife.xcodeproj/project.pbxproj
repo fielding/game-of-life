@@ -7,16 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C29D762816F22A46000E348B /* SDL_image.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C29D762616F22A46000E348B /* SDL_image.framework */; };
+		C29D762916F22A46000E348B /* SDL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C29D762716F22A46000E348B /* SDL.framework */; };
+		C29D762A16F22A57000E348B /* SDL_image.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = C29D762616F22A46000E348B /* SDL_image.framework */; };
+		C29D762B16F22A57000E348B /* SDL.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = C29D762716F22A46000E348B /* SDL.framework */; };
 		C2F03E5516F1E747002423AF /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2F03E5416F1E747002423AF /* Cocoa.framework */; };
 		C2F03E5F16F1E747002423AF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C2F03E5D16F1E747002423AF /* InfoPlist.strings */; };
 		C2F03E6516F1E747002423AF /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = C2F03E6316F1E747002423AF /* Credits.rtf */; };
-		C2F03E7216F1E76C002423AF /* SDL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2F03E7116F1E76C002423AF /* SDL.framework */; };
 		C2F03E7516F1E77C002423AF /* SDLMain.m in Sources */ = {isa = PBXBuildFile; fileRef = C2F03E7416F1E77C002423AF /* SDLMain.m */; };
-		C2F03E7716F1E7D7002423AF /* SDL.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = C2F03E7116F1E76C002423AF /* SDL.framework */; };
 		C2F03E7A16F1E860002423AF /* creep.png in Resources */ = {isa = PBXBuildFile; fileRef = C2F03E7816F1E860002423AF /* creep.png */; };
 		C2F03E7B16F1E860002423AF /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C2F03E7916F1E860002423AF /* main.cpp */; };
-		C2F03E7D16F1F06B002423AF /* SDL_image.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2F03E7C16F1F06B002423AF /* SDL_image.framework */; };
-		C2F03E7E16F1F076002423AF /* SDL_image.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = C2F03E7C16F1F06B002423AF /* SDL_image.framework */; };
 		C2F03E8016F1F356002423AF /* creep.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = C2F03E7816F1E860002423AF /* creep.png */; };
 /* End PBXBuildFile section */
 
@@ -27,8 +27,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				C2F03E7716F1E7D7002423AF /* SDL.framework in CopyFiles */,
-				C2F03E7E16F1F076002423AF /* SDL_image.framework in CopyFiles */,
+				C29D762A16F22A57000E348B /* SDL_image.framework in CopyFiles */,
+				C29D762B16F22A57000E348B /* SDL.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -45,6 +45,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		C29D762616F22A46000E348B /* SDL_image.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL_image.framework; path = ../../../../../Library/Frameworks/SDL_image.framework; sourceTree = "<group>"; };
+		C29D762716F22A46000E348B /* SDL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL.framework; path = ../../../../../Library/Frameworks/SDL.framework; sourceTree = "<group>"; };
 		C2F03E5116F1E747002423AF /* GameOfLife.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GameOfLife.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2F03E5416F1E747002423AF /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		C2F03E5716F1E747002423AF /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -53,12 +55,10 @@
 		C2F03E5C16F1E747002423AF /* GameOfLife-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GameOfLife-Info.plist"; sourceTree = "<group>"; };
 		C2F03E5E16F1E747002423AF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		C2F03E6416F1E747002423AF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
-		C2F03E7116F1E76C002423AF /* SDL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL.framework; path = ../../../../Library/Frameworks/SDL.framework; sourceTree = "<group>"; };
 		C2F03E7316F1E77C002423AF /* SDLMain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDLMain.h; path = "/Library/Frameworks/SDL.framework/devel-lite/SDLMain.h"; sourceTree = "<absolute>"; };
 		C2F03E7416F1E77C002423AF /* SDLMain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDLMain.m; path = "/Library/Frameworks/SDL.framework/devel-lite/SDLMain.m"; sourceTree = "<absolute>"; };
 		C2F03E7816F1E860002423AF /* creep.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = creep.png; sourceTree = "<group>"; };
 		C2F03E7916F1E860002423AF /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		C2F03E7C16F1F06B002423AF /* SDL_image.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL_image.framework; path = ../../../../Library/Frameworks/SDL_image.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,8 +66,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C2F03E7D16F1F06B002423AF /* SDL_image.framework in Frameworks */,
-				C2F03E7216F1E76C002423AF /* SDL.framework in Frameworks */,
+				C29D762816F22A46000E348B /* SDL_image.framework in Frameworks */,
+				C29D762916F22A46000E348B /* SDL.framework in Frameworks */,
 				C2F03E5516F1E747002423AF /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -78,8 +78,8 @@
 		C2F03E4816F1E747002423AF = {
 			isa = PBXGroup;
 			children = (
-				C2F03E7C16F1F06B002423AF /* SDL_image.framework */,
-				C2F03E7116F1E76C002423AF /* SDL.framework */,
+				C29D762616F22A46000E348B /* SDL_image.framework */,
+				C29D762716F22A46000E348B /* SDL.framework */,
 				C2F03E5A16F1E747002423AF /* GameOfLife */,
 				C2F03E5316F1E747002423AF /* Frameworks */,
 				C2F03E5216F1E747002423AF /* Products */,
@@ -338,6 +338,7 @@
 				C2F03E7016F1E747002423AF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

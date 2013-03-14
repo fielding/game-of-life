@@ -9,16 +9,16 @@
 #include <iostream>
 #include "SDL.h"
 #include "SDL_image.h"
+#include "SDL_rotozoom.h"
 
 using namespace std;
 
 #define DEBUGINFO 0
 
-#define CELL_SIZE 16
-#define BOARD_SIZE 800
+#define CELL_SIZE 8      // length and width (in pixels) for the square cells
+#define BOARD_SIZE 1600    // Length and width for the square viewing area
+#define SCREEN_BPP 8      // Screen bits per-pixels
 
-#define CELL_COLOR_ALIVE al_map_rgb( 255, 102, 0 )
-#define CELL_COLOR_DEAD al_map_rgb( 0, 0, 0 )
 
 int grid[BOARD_SIZE / CELL_SIZE][BOARD_SIZE / CELL_SIZE];       // Create a grid based on total board size and each cell size
 int bufferGrid[BOARD_SIZE / CELL_SIZE][BOARD_SIZE / CELL_SIZE];
@@ -30,8 +30,9 @@ int checkNeighbors( int x, int y );
 void fillCell( Sint16 x, Sint16 y, Uint16 w, Uint16 h, int color );
 
 // Surfaces
-SDL_Surface *image = NULL;
 SDL_Surface *screen = NULL;
+SDL_Surface *image = NULL;
+SDL_Surface *scaledImage = NULL;
 
 // Event structure
 SDL_Event event;
@@ -40,17 +41,21 @@ int main ( int argc, char **argv )
 {
   bool exit = false;
   
-  if ( SDL_Init( SDL_INIT_EVERYTHING ))
+  if ( SDL_Init( SDL_INIT_EVERYTHING ) == -1 )
   {
     printf( "SDL_Init: %s\n", SDL_GetError() );
+    return 1;
   }
   
-  screen = SDL_SetVideoMode( BOARD_SIZE, BOARD_SIZE, 32, SDL_SWSURFACE );
+  screen = SDL_SetVideoMode( BOARD_SIZE, BOARD_SIZE, SCREEN_BPP, SDL_SWSURFACE );
         
-  if ( !screen )
+  if ( screen == NULL )
   {
     printf( "SDL_SetVideoMode: %s\n", SDL_GetError() );
+    return 1;
   }
+  
+  SDL_WM_SetCaption( "Conway's Game of Life", NULL);
 
   image = IMG_Load( "GameOfLife.app/Contents/Resources/creep.png" );
     
@@ -58,6 +63,10 @@ int main ( int argc, char **argv )
   {
     printf( "IMG_Load: %s\n", IMG_GetError() );
   }
+  
+  scaledImage = rotozoomSurface(image, 0, ( float( CELL_SIZE ) / 16), 0);   // Scale cell image to cell size (16 is based on original png being 16px)
+  SDL_FreeSurface( image );   // Finished with image, can free it back up
+  
   
   spawn();    // spawn initial cell data
   draw();     // draw the initial board
@@ -91,7 +100,7 @@ int main ( int argc, char **argv )
     SDL_Delay( 500 );   // wait .5 seconds
   }
   
-  SDL_FreeSurface( image );
+  SDL_FreeSurface( scaledImage );
   SDL_Quit();
   return 0;
 }
@@ -127,7 +136,7 @@ int draw()
         offset.x = x * CELL_SIZE;
         offset.y = y * CELL_SIZE;
         
-        SDL_BlitSurface( image, NULL, screen, &offset );
+        SDL_BlitSurface( scaledImage, NULL, screen, &offset );
       
       } else
       {
