@@ -7,193 +7,130 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C25A3D3816EE64FB002E8759 /* Allegro-5.1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C25A3D2D16EE64FB002E8759 /* Allegro-5.1.framework */; };
-		C25A3D3A16EE64FB002E8759 /* AllegroAudio-5.1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C25A3D2F16EE64FB002E8759 /* AllegroAudio-5.1.framework */; };
-		C25A3D3B16EE64FB002E8759 /* AllegroColor-5.1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C25A3D3016EE64FB002E8759 /* AllegroColor-5.1.framework */; };
-		C25A3D3C16EE64FB002E8759 /* AllegroDialog-5.1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C25A3D3116EE64FB002E8759 /* AllegroDialog-5.1.framework */; };
-		C25A3D3D16EE64FB002E8759 /* AllegroFont-5.1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C25A3D3216EE64FB002E8759 /* AllegroFont-5.1.framework */; };
-		C25A3D3E16EE64FB002E8759 /* AllegroImage-5.1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C25A3D3316EE64FB002E8759 /* AllegroImage-5.1.framework */; };
-		C25A3D3F16EE64FB002E8759 /* AllegroMain-5.1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C25A3D3416EE64FB002E8759 /* AllegroMain-5.1.framework */; settings = {ATTRIBUTES = (Required, ); }; };
-		C25A3D4016EE64FB002E8759 /* AllegroMemfile-5.1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C25A3D3516EE64FB002E8759 /* AllegroMemfile-5.1.framework */; };
-		C25A3D4116EE64FB002E8759 /* AllegroPhysfs-5.1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C25A3D3616EE64FB002E8759 /* AllegroPhysfs-5.1.framework */; };
-		C25A3D4216EE64FB002E8759 /* AllegroPrimitives-5.1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C25A3D3716EE64FB002E8759 /* AllegroPrimitives-5.1.framework */; };
-		C25A3D4316EE6502002E8759 /* Allegro-5.1.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = C25A3D2D16EE64FB002E8759 /* Allegro-5.1.framework */; };
-		C25A3D4416EE6502002E8759 /* AllegroAcodec-5.1.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = C25A3D2E16EE64FB002E8759 /* AllegroAcodec-5.1.framework */; };
-		C25A3D4516EE6502002E8759 /* AllegroAudio-5.1.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = C25A3D2F16EE64FB002E8759 /* AllegroAudio-5.1.framework */; };
-		C25A3D4616EE6502002E8759 /* AllegroColor-5.1.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = C25A3D3016EE64FB002E8759 /* AllegroColor-5.1.framework */; };
-		C25A3D4716EE6502002E8759 /* AllegroDialog-5.1.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = C25A3D3116EE64FB002E8759 /* AllegroDialog-5.1.framework */; };
-		C25A3D4816EE6502002E8759 /* AllegroFont-5.1.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = C25A3D3216EE64FB002E8759 /* AllegroFont-5.1.framework */; };
-		C25A3D4916EE6502002E8759 /* AllegroImage-5.1.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = C25A3D3316EE64FB002E8759 /* AllegroImage-5.1.framework */; };
-		C25A3D4A16EE6502002E8759 /* AllegroMain-5.1.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = C25A3D3416EE64FB002E8759 /* AllegroMain-5.1.framework */; };
-		C25A3D4B16EE6502002E8759 /* AllegroMemfile-5.1.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = C25A3D3516EE64FB002E8759 /* AllegroMemfile-5.1.framework */; };
-		C25A3D4C16EE6502002E8759 /* AllegroPhysfs-5.1.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = C25A3D3616EE64FB002E8759 /* AllegroPhysfs-5.1.framework */; };
-		C25A3D4D16EE6502002E8759 /* AllegroPrimitives-5.1.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = C25A3D3716EE64FB002E8759 /* AllegroPrimitives-5.1.framework */; };
-		C25A3D5016EE7D3B002E8759 /* creep.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = C25A3D4F16EE7D3B002E8759 /* creep.png */; };
-		C2AE304716EE2AC300B54BF5 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2AE304616EE2AC300B54BF5 /* Cocoa.framework */; };
-		C2AE306516EE2AC300B54BF5 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2AE306416EE2AC300B54BF5 /* SenTestingKit.framework */; };
-		C2AE306616EE2AC300B54BF5 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2AE304616EE2AC300B54BF5 /* Cocoa.framework */; };
-		C2AE309B16EE2BC000B54BF5 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C2AE309A16EE2BC000B54BF5 /* main.cpp */; };
+		C2F03E5516F1E747002423AF /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2F03E5416F1E747002423AF /* Cocoa.framework */; };
+		C2F03E5F16F1E747002423AF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C2F03E5D16F1E747002423AF /* InfoPlist.strings */; };
+		C2F03E6516F1E747002423AF /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = C2F03E6316F1E747002423AF /* Credits.rtf */; };
+		C2F03E7216F1E76C002423AF /* SDL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2F03E7116F1E76C002423AF /* SDL.framework */; };
+		C2F03E7516F1E77C002423AF /* SDLMain.m in Sources */ = {isa = PBXBuildFile; fileRef = C2F03E7416F1E77C002423AF /* SDLMain.m */; };
+		C2F03E7716F1E7D7002423AF /* SDL.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = C2F03E7116F1E76C002423AF /* SDL.framework */; };
+		C2F03E7A16F1E860002423AF /* creep.png in Resources */ = {isa = PBXBuildFile; fileRef = C2F03E7816F1E860002423AF /* creep.png */; };
+		C2F03E7B16F1E860002423AF /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C2F03E7916F1E860002423AF /* main.cpp */; };
+		C2F03E7D16F1F06B002423AF /* SDL_image.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2F03E7C16F1F06B002423AF /* SDL_image.framework */; };
+		C2F03E7E16F1F076002423AF /* SDL_image.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = C2F03E7C16F1F06B002423AF /* SDL_image.framework */; };
+		C2F03E8016F1F356002423AF /* creep.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = C2F03E7816F1E860002423AF /* creep.png */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		C2AE306716EE2AC300B54BF5 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = C2AE303916EE2AB900B54BF5 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = C2AE304216EE2AC300B54BF5;
-			remoteInfo = GameOfLife;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXCopyFilesBuildPhase section */
-		C25A3D4E16EE7D1A002E8759 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 7;
-			files = (
-				C25A3D5016EE7D3B002E8759 /* creep.png in CopyFiles */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		C2AE307816EE2AD900B54BF5 /* CopyFiles */ = {
+		C2F03E7616F1E7CF002423AF /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				C25A3D4316EE6502002E8759 /* Allegro-5.1.framework in CopyFiles */,
-				C25A3D4416EE6502002E8759 /* AllegroAcodec-5.1.framework in CopyFiles */,
-				C25A3D4516EE6502002E8759 /* AllegroAudio-5.1.framework in CopyFiles */,
-				C25A3D4616EE6502002E8759 /* AllegroColor-5.1.framework in CopyFiles */,
-				C25A3D4716EE6502002E8759 /* AllegroDialog-5.1.framework in CopyFiles */,
-				C25A3D4816EE6502002E8759 /* AllegroFont-5.1.framework in CopyFiles */,
-				C25A3D4916EE6502002E8759 /* AllegroImage-5.1.framework in CopyFiles */,
-				C25A3D4A16EE6502002E8759 /* AllegroMain-5.1.framework in CopyFiles */,
-				C25A3D4B16EE6502002E8759 /* AllegroMemfile-5.1.framework in CopyFiles */,
-				C25A3D4C16EE6502002E8759 /* AllegroPhysfs-5.1.framework in CopyFiles */,
-				C25A3D4D16EE6502002E8759 /* AllegroPrimitives-5.1.framework in CopyFiles */,
+				C2F03E7716F1E7D7002423AF /* SDL.framework in CopyFiles */,
+				C2F03E7E16F1F076002423AF /* SDL_image.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C2F03E7F16F1F339002423AF /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 7;
+			files = (
+				C2F03E8016F1F356002423AF /* creep.png in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		C25A3D2D16EE64FB002E8759 /* Allegro-5.1.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "Allegro-5.1.framework"; path = "../../../../Library/Frameworks/Allegro-5.1.framework"; sourceTree = "<group>"; };
-		C25A3D2E16EE64FB002E8759 /* AllegroAcodec-5.1.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "AllegroAcodec-5.1.framework"; path = "../../../../Library/Frameworks/AllegroAcodec-5.1.framework"; sourceTree = "<group>"; };
-		C25A3D2F16EE64FB002E8759 /* AllegroAudio-5.1.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "AllegroAudio-5.1.framework"; path = "../../../../Library/Frameworks/AllegroAudio-5.1.framework"; sourceTree = "<group>"; };
-		C25A3D3016EE64FB002E8759 /* AllegroColor-5.1.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "AllegroColor-5.1.framework"; path = "../../../../Library/Frameworks/AllegroColor-5.1.framework"; sourceTree = "<group>"; };
-		C25A3D3116EE64FB002E8759 /* AllegroDialog-5.1.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "AllegroDialog-5.1.framework"; path = "../../../../Library/Frameworks/AllegroDialog-5.1.framework"; sourceTree = "<group>"; };
-		C25A3D3216EE64FB002E8759 /* AllegroFont-5.1.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "AllegroFont-5.1.framework"; path = "../../../../Library/Frameworks/AllegroFont-5.1.framework"; sourceTree = "<group>"; };
-		C25A3D3316EE64FB002E8759 /* AllegroImage-5.1.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "AllegroImage-5.1.framework"; path = "../../../../Library/Frameworks/AllegroImage-5.1.framework"; sourceTree = "<group>"; };
-		C25A3D3416EE64FB002E8759 /* AllegroMain-5.1.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "AllegroMain-5.1.framework"; path = "../../../../Library/Frameworks/AllegroMain-5.1.framework"; sourceTree = "<group>"; };
-		C25A3D3516EE64FB002E8759 /* AllegroMemfile-5.1.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "AllegroMemfile-5.1.framework"; path = "../../../../Library/Frameworks/AllegroMemfile-5.1.framework"; sourceTree = "<group>"; };
-		C25A3D3616EE64FB002E8759 /* AllegroPhysfs-5.1.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "AllegroPhysfs-5.1.framework"; path = "../../../../Library/Frameworks/AllegroPhysfs-5.1.framework"; sourceTree = "<group>"; };
-		C25A3D3716EE64FB002E8759 /* AllegroPrimitives-5.1.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "AllegroPrimitives-5.1.framework"; path = "../../../../Library/Frameworks/AllegroPrimitives-5.1.framework"; sourceTree = "<group>"; };
-		C25A3D4F16EE7D3B002E8759 /* creep.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = creep.png; path = GameOfLife/creep.png; sourceTree = "<group>"; };
-		C2AE304316EE2AC300B54BF5 /* GameOfLife.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GameOfLife.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		C2AE304616EE2AC300B54BF5 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
-		C2AE304916EE2AC300B54BF5 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
-		C2AE304A16EE2AC300B54BF5 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		C2AE304B16EE2AC300B54BF5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		C2AE306316EE2AC300B54BF5 /* GameOfLifeTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GameOfLifeTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
-		C2AE306416EE2AC300B54BF5 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		C2AE309A16EE2BC000B54BF5 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		C2F03E5116F1E747002423AF /* GameOfLife.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GameOfLife.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C2F03E5416F1E747002423AF /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		C2F03E5716F1E747002423AF /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		C2F03E5816F1E747002423AF /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		C2F03E5916F1E747002423AF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		C2F03E5C16F1E747002423AF /* GameOfLife-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GameOfLife-Info.plist"; sourceTree = "<group>"; };
+		C2F03E5E16F1E747002423AF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		C2F03E6416F1E747002423AF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		C2F03E7116F1E76C002423AF /* SDL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL.framework; path = ../../../../Library/Frameworks/SDL.framework; sourceTree = "<group>"; };
+		C2F03E7316F1E77C002423AF /* SDLMain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDLMain.h; path = "/Library/Frameworks/SDL.framework/devel-lite/SDLMain.h"; sourceTree = "<absolute>"; };
+		C2F03E7416F1E77C002423AF /* SDLMain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDLMain.m; path = "/Library/Frameworks/SDL.framework/devel-lite/SDLMain.m"; sourceTree = "<absolute>"; };
+		C2F03E7816F1E860002423AF /* creep.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = creep.png; sourceTree = "<group>"; };
+		C2F03E7916F1E860002423AF /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		C2F03E7C16F1F06B002423AF /* SDL_image.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL_image.framework; path = ../../../../Library/Frameworks/SDL_image.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		C2AE304016EE2AC300B54BF5 /* Frameworks */ = {
+		C2F03E4E16F1E747002423AF /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C25A3D3816EE64FB002E8759 /* Allegro-5.1.framework in Frameworks */,
-				C25A3D3A16EE64FB002E8759 /* AllegroAudio-5.1.framework in Frameworks */,
-				C25A3D3B16EE64FB002E8759 /* AllegroColor-5.1.framework in Frameworks */,
-				C25A3D3C16EE64FB002E8759 /* AllegroDialog-5.1.framework in Frameworks */,
-				C25A3D3D16EE64FB002E8759 /* AllegroFont-5.1.framework in Frameworks */,
-				C25A3D3E16EE64FB002E8759 /* AllegroImage-5.1.framework in Frameworks */,
-				C25A3D3F16EE64FB002E8759 /* AllegroMain-5.1.framework in Frameworks */,
-				C25A3D4016EE64FB002E8759 /* AllegroMemfile-5.1.framework in Frameworks */,
-				C25A3D4116EE64FB002E8759 /* AllegroPhysfs-5.1.framework in Frameworks */,
-				C25A3D4216EE64FB002E8759 /* AllegroPrimitives-5.1.framework in Frameworks */,
-				C2AE304716EE2AC300B54BF5 /* Cocoa.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		C2AE305F16EE2AC300B54BF5 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				C2AE306516EE2AC300B54BF5 /* SenTestingKit.framework in Frameworks */,
-				C2AE306616EE2AC300B54BF5 /* Cocoa.framework in Frameworks */,
+				C2F03E7D16F1F06B002423AF /* SDL_image.framework in Frameworks */,
+				C2F03E7216F1E76C002423AF /* SDL.framework in Frameworks */,
+				C2F03E5516F1E747002423AF /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		C2AE303816EE2AB900B54BF5 = {
+		C2F03E4816F1E747002423AF = {
 			isa = PBXGroup;
 			children = (
-				C25A3D4F16EE7D3B002E8759 /* creep.png */,
-				C25A3D2D16EE64FB002E8759 /* Allegro-5.1.framework */,
-				C25A3D2E16EE64FB002E8759 /* AllegroAcodec-5.1.framework */,
-				C25A3D2F16EE64FB002E8759 /* AllegroAudio-5.1.framework */,
-				C25A3D3016EE64FB002E8759 /* AllegroColor-5.1.framework */,
-				C25A3D3116EE64FB002E8759 /* AllegroDialog-5.1.framework */,
-				C25A3D3216EE64FB002E8759 /* AllegroFont-5.1.framework */,
-				C25A3D3316EE64FB002E8759 /* AllegroImage-5.1.framework */,
-				C25A3D3416EE64FB002E8759 /* AllegroMain-5.1.framework */,
-				C25A3D3516EE64FB002E8759 /* AllegroMemfile-5.1.framework */,
-				C25A3D3616EE64FB002E8759 /* AllegroPhysfs-5.1.framework */,
-				C25A3D3716EE64FB002E8759 /* AllegroPrimitives-5.1.framework */,
-				C2AE304C16EE2AC300B54BF5 /* GameOfLife */,
-				C2AE304516EE2AC300B54BF5 /* Frameworks */,
-				C2AE304416EE2AC300B54BF5 /* Products */,
+				C2F03E7C16F1F06B002423AF /* SDL_image.framework */,
+				C2F03E7116F1E76C002423AF /* SDL.framework */,
+				C2F03E5A16F1E747002423AF /* GameOfLife */,
+				C2F03E5316F1E747002423AF /* Frameworks */,
+				C2F03E5216F1E747002423AF /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		C2AE304416EE2AC300B54BF5 /* Products */ = {
+		C2F03E5216F1E747002423AF /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C2AE304316EE2AC300B54BF5 /* GameOfLife.app */,
-				C2AE306316EE2AC300B54BF5 /* GameOfLifeTests.octest */,
+				C2F03E5116F1E747002423AF /* GameOfLife.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		C2AE304516EE2AC300B54BF5 /* Frameworks */ = {
+		C2F03E5316F1E747002423AF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				C2AE304616EE2AC300B54BF5 /* Cocoa.framework */,
-				C2AE306416EE2AC300B54BF5 /* SenTestingKit.framework */,
-				C2AE304816EE2AC300B54BF5 /* Other Frameworks */,
+				C2F03E5416F1E747002423AF /* Cocoa.framework */,
+				C2F03E5616F1E747002423AF /* Other Frameworks */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		C2AE304816EE2AC300B54BF5 /* Other Frameworks */ = {
+		C2F03E5616F1E747002423AF /* Other Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				C2AE304916EE2AC300B54BF5 /* AppKit.framework */,
-				C2AE304A16EE2AC300B54BF5 /* CoreData.framework */,
-				C2AE304B16EE2AC300B54BF5 /* Foundation.framework */,
+				C2F03E5716F1E747002423AF /* AppKit.framework */,
+				C2F03E5816F1E747002423AF /* CoreData.framework */,
+				C2F03E5916F1E747002423AF /* Foundation.framework */,
 			);
 			name = "Other Frameworks";
 			sourceTree = "<group>";
 		};
-		C2AE304C16EE2AC300B54BF5 /* GameOfLife */ = {
+		C2F03E5A16F1E747002423AF /* GameOfLife */ = {
 			isa = PBXGroup;
 			children = (
-				C2AE309A16EE2BC000B54BF5 /* main.cpp */,
-				C2AE304D16EE2AC300B54BF5 /* Supporting Files */,
+				C2F03E7916F1E860002423AF /* main.cpp */,
+				C2F03E5B16F1E747002423AF /* Supporting Files */,
 			);
 			path = GameOfLife;
 			sourceTree = "<group>";
 		};
-		C2AE304D16EE2AC300B54BF5 /* Supporting Files */ = {
+		C2F03E5B16F1E747002423AF /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				C2F03E7816F1E860002423AF /* creep.png */,
+				C2F03E7316F1E77C002423AF /* SDLMain.h */,
+				C2F03E7416F1E77C002423AF /* SDLMain.m */,
+				C2F03E5C16F1E747002423AF /* GameOfLife-Info.plist */,
+				C2F03E5D16F1E747002423AF /* InfoPlist.strings */,
+				C2F03E6316F1E747002423AF /* Credits.rtf */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -201,15 +138,15 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		C2AE304216EE2AC300B54BF5 /* GameOfLife */ = {
+		C2F03E5016F1E747002423AF /* GameOfLife */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C2AE307216EE2AC400B54BF5 /* Build configuration list for PBXNativeTarget "GameOfLife" */;
+			buildConfigurationList = C2F03E6E16F1E747002423AF /* Build configuration list for PBXNativeTarget "GameOfLife" */;
 			buildPhases = (
-				C2AE303F16EE2AC300B54BF5 /* Sources */,
-				C2AE304016EE2AC300B54BF5 /* Frameworks */,
-				C2AE304116EE2AC300B54BF5 /* Resources */,
-				C2AE307816EE2AD900B54BF5 /* CopyFiles */,
-				C25A3D4E16EE7D1A002E8759 /* CopyFiles */,
+				C2F03E4D16F1E747002423AF /* Sources */,
+				C2F03E4E16F1E747002423AF /* Frameworks */,
+				C2F03E4F16F1E747002423AF /* Resources */,
+				C2F03E7616F1E7CF002423AF /* CopyFiles */,
+				C2F03E7F16F1F339002423AF /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -217,150 +154,97 @@
 			);
 			name = GameOfLife;
 			productName = GameOfLife;
-			productReference = C2AE304316EE2AC300B54BF5 /* GameOfLife.app */;
+			productReference = C2F03E5116F1E747002423AF /* GameOfLife.app */;
 			productType = "com.apple.product-type.application";
-		};
-		C2AE306216EE2AC300B54BF5 /* GameOfLifeTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = C2AE307516EE2AC400B54BF5 /* Build configuration list for PBXNativeTarget "GameOfLifeTests" */;
-			buildPhases = (
-				C2AE305E16EE2AC300B54BF5 /* Sources */,
-				C2AE305F16EE2AC300B54BF5 /* Frameworks */,
-				C2AE306016EE2AC300B54BF5 /* Resources */,
-				C2AE306116EE2AC300B54BF5 /* ShellScript */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				C2AE306816EE2AC300B54BF5 /* PBXTargetDependency */,
-			);
-			name = GameOfLifeTests;
-			productName = GameOfLifeTests;
-			productReference = C2AE306316EE2AC300B54BF5 /* GameOfLifeTests.octest */;
-			productType = "com.apple.product-type.bundle";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		C2AE303916EE2AB900B54BF5 /* Project object */ = {
+		C2F03E4916F1E747002423AF /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = "Fielding Johnston";
 			};
-			buildConfigurationList = C2AE303C16EE2AB900B54BF5 /* Build configuration list for PBXProject "GameOfLife" */;
+			buildConfigurationList = C2F03E4C16F1E747002423AF /* Build configuration list for PBXProject "GameOfLife" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 			);
-			mainGroup = C2AE303816EE2AB900B54BF5;
-			productRefGroup = C2AE304416EE2AC300B54BF5 /* Products */;
+			mainGroup = C2F03E4816F1E747002423AF;
+			productRefGroup = C2F03E5216F1E747002423AF /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				C2AE304216EE2AC300B54BF5 /* GameOfLife */,
-				C2AE306216EE2AC300B54BF5 /* GameOfLifeTests */,
+				C2F03E5016F1E747002423AF /* GameOfLife */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		C2AE304116EE2AC300B54BF5 /* Resources */ = {
+		C2F03E4F16F1E747002423AF /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		C2AE306016EE2AC300B54BF5 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				C2F03E5F16F1E747002423AF /* InfoPlist.strings in Resources */,
+				C2F03E6516F1E747002423AF /* Credits.rtf in Resources */,
+				C2F03E7A16F1E860002423AF /* creep.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		C2AE306116EE2AC300B54BF5 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
-		C2AE303F16EE2AC300B54BF5 /* Sources */ = {
+		C2F03E4D16F1E747002423AF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C2AE309B16EE2BC000B54BF5 /* main.cpp in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		C2AE305E16EE2AC300B54BF5 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				C2F03E7516F1E77C002423AF /* SDLMain.m in Sources */,
+				C2F03E7B16F1E860002423AF /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXTargetDependency section */
-		C2AE306816EE2AC300B54BF5 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = C2AE304216EE2AC300B54BF5 /* GameOfLife */;
-			targetProxy = C2AE306716EE2AC300B54BF5 /* PBXContainerItemProxy */;
+/* Begin PBXVariantGroup section */
+		C2F03E5D16F1E747002423AF /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C2F03E5E16F1E747002423AF /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
 		};
-/* End PBXTargetDependency section */
+		C2F03E6316F1E747002423AF /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C2F03E6416F1E747002423AF /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		C2AE303D16EE2AB900B54BF5 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_CXX_LIBRARY = "libstdc++";
-			};
-			name = Debug;
-		};
-		C2AE303E16EE2AB900B54BF5 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_CXX_LIBRARY = "libstdc++";
-			};
-			name = Release;
-		};
-		C2AE307316EE2AC400B54BF5 /* Debug */ = {
+		C2F03E6C16F1E747002423AF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
-				FRAMEWORK_SEARCH_PATHS = /Library/Frameworks;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -370,185 +254,92 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = (
-					"/Library/Frameworks/Allegro-5.1.framework/Versions/Current/Headers",
-					"/Library/Frameworks/AllegroMain-5.1.framework/Versions/Current/Headers",
-					"/Library/Frameworks/AllegroAcodec-5.1.framework/Versions/Current/Headers",
-					"/Library/Frameworks/AllegroAudio-5.1.framework/Versions/Current/Headers",
-					"/Library/Frameworks/AllegroColor-5.1.framework/Versions/Current/Header",
-					"/Library/Frameworks/AllegroDialog-5.1.framework/Versions/Current/Headers",
-					"/Library/Frameworks/AllegroFont-5.1.framework/Versions/Current/Headers",
-					"/Library/Frameworks/AllegroImage-5.1.framework/Versions/Current/Headers",
-					"/Library/Frameworks/AllegroPhysfs-5.1.framework/Versions/Current/Headers",
-					"/Library/Frameworks/AllegroMemfile-5.1.framework/Versions/Current/Headers",
-					"/Library/Frameworks/AllegroPrimitives-5.1.framework/Versions/Current/Headers",
-					"/Library/Frameworks/AllegroTTF-5.1.framework/Versions/Current/Headers\n",
-				);
-				INFOPLIST_FILE = "";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
-				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
 		};
-		C2AE307416EE2AC400B54BF5 /* Release */ = {
+		C2F03E6D16F1E747002423AF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				FRAMEWORK_SEARCH_PATHS = /Library/Frameworks;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = (
-					"/Library/Frameworks/Allegro-5.1.framework/Versions/Current/Headers",
-					"/Library/Frameworks/AllegroMain-5.1.framework/Versions/Current/Headers",
-					"/Library/Frameworks/AllegroAcodec-5.1.framework/Versions/Current/Headers",
-					"/Library/Frameworks/AllegroAudio-5.1.framework/Versions/Current/Headers",
-					"/Library/Frameworks/AllegroColor-5.1.framework/Versions/Current/Header",
-					"/Library/Frameworks/AllegroDialog-5.1.framework/Versions/Current/Headers",
-					"/Library/Frameworks/AllegroFont-5.1.framework/Versions/Current/Headers",
-					"/Library/Frameworks/AllegroImage-5.1.framework/Versions/Current/Headers",
-					"/Library/Frameworks/AllegroPhysfs-5.1.framework/Versions/Current/Headers",
-					"/Library/Frameworks/AllegroMemfile-5.1.framework/Versions/Current/Headers",
-					"/Library/Frameworks/AllegroPrimitives-5.1.framework/Versions/Current/Headers",
-					"/Library/Frameworks/AllegroTTF-5.1.framework/Versions/Current/Headers\n",
-				);
-				INFOPLIST_FILE = "";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
-				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
-				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
 		};
-		C2AE307616EE2AC400B54BF5 /* Debug */ = {
+		C2F03E6F16F1E747002423AF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/GameOfLife.app/Contents/MacOS/GameOfLife";
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COMBINE_HIDPI_IMAGES = YES;
-				COPY_PHASE_STRIP = NO;
-				FRAMEWORK_SEARCH_PATHS = "\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"";
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
+				FRAMEWORK_SEARCH_PATHS = /Library/Frameworks;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GameOfLife/GameOfLife-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
+				HEADER_SEARCH_PATHS = (
+					/Library/Frameworks/SDL.framework/Headers,
+					/Library/Frameworks/SDL_image.framework/Headers,
 				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = "GameOfLifeTests/GameOfLifeTests-Info.plist";
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
-				ONLY_ACTIVE_ARCH = YES;
+				INFOPLIST_FILE = "GameOfLife/GameOfLife-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = octest;
+				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
 		};
-		C2AE307716EE2AC400B54BF5 /* Release */ = {
+		C2F03E7016F1E747002423AF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/GameOfLife.app/Contents/MacOS/GameOfLife";
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COMBINE_HIDPI_IMAGES = YES;
-				COPY_PHASE_STRIP = YES;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				FRAMEWORK_SEARCH_PATHS = "\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"";
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				FRAMEWORK_SEARCH_PATHS = /Library/Frameworks;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GameOfLife/GameOfLife-Prefix.pch";
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = "GameOfLifeTests/GameOfLifeTests-Info.plist";
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				HEADER_SEARCH_PATHS = (
+					/Library/Frameworks/SDL.framework/Headers,
+					/Library/Frameworks/SDL_image.framework/Headers,
+				);
+				INFOPLIST_FILE = "GameOfLife/GameOfLife-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = octest;
+				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		C2AE303C16EE2AB900B54BF5 /* Build configuration list for PBXProject "GameOfLife" */ = {
+		C2F03E4C16F1E747002423AF /* Build configuration list for PBXProject "GameOfLife" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				C2AE303D16EE2AB900B54BF5 /* Debug */,
-				C2AE303E16EE2AB900B54BF5 /* Release */,
+				C2F03E6C16F1E747002423AF /* Debug */,
+				C2F03E6D16F1E747002423AF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C2AE307216EE2AC400B54BF5 /* Build configuration list for PBXNativeTarget "GameOfLife" */ = {
+		C2F03E6E16F1E747002423AF /* Build configuration list for PBXNativeTarget "GameOfLife" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				C2AE307316EE2AC400B54BF5 /* Debug */,
-				C2AE307416EE2AC400B54BF5 /* Release */,
+				C2F03E6F16F1E747002423AF /* Debug */,
+				C2F03E7016F1E747002423AF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		C2AE307516EE2AC400B54BF5 /* Build configuration list for PBXNativeTarget "GameOfLifeTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				C2AE307616EE2AC400B54BF5 /* Debug */,
-				C2AE307716EE2AC400B54BF5 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = C2AE303916EE2AB900B54BF5 /* Project object */;
+	rootObject = C2F03E4916F1E747002423AF /* Project object */;
 }

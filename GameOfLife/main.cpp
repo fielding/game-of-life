@@ -6,17 +6,16 @@
 //
 //
 
-#include <allegro5/allegro.h>
-#include <allegro5/allegro_image.h>
-#include <allegro5/allegro_native_dialog.h>
-#include <allegro5/allegro_primitives.h>
+
 #include <iostream>
+#include "SDL.h"
+#include "SDL_image.h"
 
 using namespace std;
 
 #define DEBUGINFO 0
 
-#define BOARD_GRID_SIZE 8
+#define BOARD_GRID_SIZE 16
 #define BOARD_SIZE 800
 
 #define CELL_COLOR_ALIVE al_map_rgb(255, 102, 0)
@@ -29,66 +28,63 @@ int spawn();
 int draw();
 int update();
 int checkNeighbors(int x, int y);
+void fillsq(Sint16 x, Sint16 y, Uint16 w, Uint16 h, int color);
 
-ALLEGRO_BITMAP *image = NULL;
-ALLEGRO_DISPLAY *display = NULL;
-ALLEGRO_KEYBOARD_STATE state;
+// ALLEGRO_BITMAP *image = NULL;
+// ALLEGRO_DISPLAY *display = NULL;
+// ALLEGRO_KEYBOARD_STATE state;
+
+SDL_Surface *image = NULL;
+SDL_Surface *screen = NULL;
+
 
 int main (int argc, char **argv) {
+   
+
     
-    if (!al_init()){
-        al_show_native_message_box(display, "Error", "Error", "Failed to initialize allegro!", NULL, ALLEGRO_MESSAGEBOX_ERROR);
-        return 0;
+    if ( SDL_Init( SDL_INIT_EVERYTHING )){
+         printf("SDL_Init: %s\n", SDL_GetError());
     }
-    
-    if (!al_init_primitives_addon()) {
-        al_show_native_message_box(display, "Error", "Error", "Failed to initiliaze al_init_primitives_addon!", NULL, ALLEGRO_MESSAGEBOX_ERROR);
-        return 0;
+
+    screen = SDL_SetVideoMode( BOARD_SIZE, BOARD_SIZE, 32, SDL_SWSURFACE );
+        
+    if (!screen) {
+        printf("SDL_SetVideoMode: %s\n", SDL_GetError());
     }
-    
-    if(!al_init_image_addon()){
-        al_show_native_message_box(display, "Error", "Error", "Failed to initialize display!", NULL, ALLEGRO_MESSAGEBOX_ERROR);
-        return 0;
-    }
-    
-    if (!al_install_keyboard()) {
-        al_show_native_message_box(display, "Error", "Error", "Failed to initialize al_install_keyboard", NULL, ALLEGRO_MESSAGEBOX_ERROR);
-        return 0;
-    }
-    
-    display = al_create_display(BOARD_SIZE, BOARD_SIZE);
-    
-    if (!display) {
-        al_show_native_message_box(display, "Error", "Error", "Failed to initialize allegro!", NULL, ALLEGRO_MESSAGEBOX_ERROR);
-        return 0;
-    }
-    
-    image = al_load_bitmap("creep.png");
+
+    image = IMG_Load( "GameOfLife.app/Contents/Resources/creep.png" );
     
     if(!image) {
-        al_show_native_message_box(display, "Error", "Error", "Failed to load image!", NULL, ALLEGRO_MESSAGEBOX_ERROR);
-        return 0;
+        printf("IMG_Load: %s\n", IMG_GetError());
     }
-   
+     
     // Initial Draw Tests
-    /*
-    al_draw_filled_rectangle(0, 0, 10, 10, CELL_COLOR_ALIVE);  // test for drawing alive cell
-    al_draw_filled_rectangle(10, 0, 20, 10, CELL_COLOR_DEAD); // test for drawing dead cell
-    al_draw_filled_rectangle(10, 10, 20, 20, CELL_COLOR_ALIVE);
-    */
+    //SDL_BlitSurface( image, NULL, screen, NULL );
+    //SDL_Flip( screen );
+    //SDL_Delay( 2000 );
+    
+    //SDL_Rect rect = {50, 50, 16, 16};
+    //SDL_FillRect(screen, &rect, 0xFFFFFF);
+    //SDL_Flip( screen );
+    //SDL_Delay( 2000 );
+    
     
     spawn();    // spawn initial cell data
     draw();     // draw the initial board
     
-    while (!al_key_down(&state, ALLEGRO_KEY_ESCAPE))
+    //while (!al_key_down(&state, ALLEGRO_KEY_ESCAPE))
+    while(true)
     {
         update();
         draw();
-        al_get_keyboard_state(&state);
-        al_rest(.5);
+        // al_get_keyboard_state(&state);
+        SDL_Delay( 1000 );
     }
     
-    al_destroy_display(display);
+    // al_destroy_display(display);
+    
+    SDL_FreeSurface( image );
+    SDL_Quit();
     return 0;
 }
 
@@ -117,6 +113,13 @@ int draw()
                 
                 // Scalable (web-scale lol) images of creeps for the cells
                 
+                SDL_Rect offset;
+                offset.x = x * BOARD_GRID_SIZE;
+                offset.y = y * BOARD_GRID_SIZE;
+                
+                SDL_BlitSurface( image, NULL, screen, &offset );
+                
+                /*
                 al_draw_scaled_bitmap( image,
                     0, 0,                                       // source origin
                     al_get_bitmap_width ( image ),              // source width
@@ -125,6 +128,8 @@ int draw()
                     8, 8,                                       // target dimensions
                     0                                           // flags
                 );
+                
+                */
                 
                 // First attempt to use an image for the cells, non-scalable
                 /*
@@ -140,11 +145,20 @@ int draw()
                 // al_draw_filled_rectangle(0 + (x * BOARD_GRID_SIZE), 0 + (y * BOARD_GRID_SIZE), BOARD_GRID_SIZE + (x * BOARD_GRID_SIZE), BOARD_GRID_SIZE + (y * BOARD_GRID_SIZE), CELL_COLOR_ALIVE);
                 
             } else {
-                 al_draw_filled_rectangle(0 + (x * BOARD_GRID_SIZE), 0 + (y * BOARD_GRID_SIZE), BOARD_GRID_SIZE + (x * BOARD_GRID_SIZE), BOARD_GRID_SIZE + (y * BOARD_GRID_SIZE), CELL_COLOR_DEAD);
+                Sint16 y2 = BOARD_GRID_SIZE * y;
+                Sint16 x2 = BOARD_GRID_SIZE * x;
+                Uint16 w = BOARD_GRID_SIZE;
+                Uint16 h = BOARD_GRID_SIZE;
+                SDL_Rect rect = {y2, x2, w, h};
+                SDL_FillRect(screen, &rect, 0x000000);
+                
+                 // al_draw_filled_rectangle(0 + (x * BOARD_GRID_SIZE), 0 + (y * BOARD_GRID_SIZE), BOARD_GRID_SIZE + (x * BOARD_GRID_SIZE), BOARD_GRID_SIZE + (y * BOARD_GRID_SIZE), CELL_COLOR_DEAD);
             }
         }
     }
-    al_flip_display();
+    
+    SDL_Flip( screen );
+
     return 0;
 }
 
@@ -200,4 +214,9 @@ int checkNeighbors(int x, int y) {
     if(DEBUGINFO){cout<<x<<","<<y<<" has "<< ncount << " current neighbor cells.\n";}
     
     return ncount;
+}
+
+void fillsq(Sint16 x, Sint16 y, Uint16 w, Uint16 h, int color) {
+    SDL_Rect rect = {x,y,w,h};
+    SDL_FillRect(screen, &rect, color);
 }
