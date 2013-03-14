@@ -14,14 +14,14 @@ using namespace std;
 
 #define DEBUGINFO 0
 
-#define BOARD_GRID_SIZE 16
+#define CELL_SIZE 16
 #define BOARD_SIZE 800
 
 #define CELL_COLOR_ALIVE al_map_rgb( 255, 102, 0 )
 #define CELL_COLOR_DEAD al_map_rgb( 0, 0, 0 )
 
-int grid[BOARD_SIZE / BOARD_GRID_SIZE][BOARD_SIZE / BOARD_GRID_SIZE];       // Create a grid based on total board size and each cell size
-int bufferGrid[BOARD_SIZE / BOARD_GRID_SIZE][BOARD_SIZE / BOARD_GRID_SIZE];
+int grid[BOARD_SIZE / CELL_SIZE][BOARD_SIZE / CELL_SIZE];       // Create a grid based on total board size and each cell size
+int bufferGrid[BOARD_SIZE / CELL_SIZE][BOARD_SIZE / CELL_SIZE];
 
 int spawn();
 int draw();
@@ -102,9 +102,9 @@ int spawn()
   int rando = 0;
   srand(( unsigned )time( NULL ));
     
-  for ( int x = 0; x < BOARD_SIZE / BOARD_GRID_SIZE; x++ )
+  for ( int x = 0; x < BOARD_SIZE / CELL_SIZE; x++ )
   {
-    for ( int y = 0; y < BOARD_SIZE / BOARD_GRID_SIZE; y++ )
+    for ( int y = 0; y < BOARD_SIZE / CELL_SIZE; y++ )
     {
       rando = rand() % 2;
       grid[x][y] = rando;
@@ -116,22 +116,22 @@ int spawn()
 
 int draw()
 {
-  for ( int x = 0; x < BOARD_SIZE / BOARD_GRID_SIZE; x++ )
+  for ( int x = 0; x < BOARD_SIZE / CELL_SIZE; x++ )
   {
-    for ( int y = 0; y < BOARD_SIZE / BOARD_GRID_SIZE; y++ )
+    for ( int y = 0; y < BOARD_SIZE / CELL_SIZE; y++ )
     {
       if ( grid[x][y] == 1 )
       {
         // Scalable (web-scale lol) images of creeps for the cells
         SDL_Rect offset;
-        offset.x = x * BOARD_GRID_SIZE;
-        offset.y = y * BOARD_GRID_SIZE;
+        offset.x = x * CELL_SIZE;
+        offset.y = y * CELL_SIZE;
         
         SDL_BlitSurface( image, NULL, screen, &offset );
       
       } else
       {
-        fillCell( BOARD_GRID_SIZE * x, BOARD_GRID_SIZE * y, BOARD_GRID_SIZE, BOARD_GRID_SIZE, 0x000000 );
+        fillCell( CELL_SIZE * x, CELL_SIZE * y, CELL_SIZE, CELL_SIZE, 0x000000 );
       }
     }
   }
@@ -147,9 +147,9 @@ int update()
     // 3. Any live cell with more than three live neighbours dies, as if by overcrowding.
     // 4. Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.
     
-    for ( int x = 0; x < BOARD_SIZE / BOARD_GRID_SIZE; x++ )
+    for ( int x = 0; x < BOARD_SIZE / CELL_SIZE; x++ )
     {
-        for ( int y = 0; y < BOARD_SIZE / BOARD_GRID_SIZE; y++ )
+        for ( int y = 0; y < BOARD_SIZE / CELL_SIZE; y++ )
         {
             int neighbors = checkNeighbors( x, y );
             
@@ -174,9 +174,9 @@ int update()
         }
     }
     
-    for ( int x = 0; x < BOARD_SIZE / BOARD_GRID_SIZE; x++ )
+    for ( int x = 0; x < BOARD_SIZE / CELL_SIZE; x++ )
     {
-        for ( int y = 0; y < BOARD_SIZE / BOARD_GRID_SIZE; y++ )
+        for ( int y = 0; y < BOARD_SIZE / CELL_SIZE; y++ )
         {
             grid[x][y] = bufferGrid[x][y];
         }
@@ -192,7 +192,7 @@ int checkNeighbors( int x, int y )
     {
         for ( int b = y - 1; b <= y + 1; b++)
         {
-            if ( grid[a][b] == 1 && a >= 0 && a <= ( BOARD_SIZE / BOARD_GRID_SIZE - 1 ) && b >= 0 && b <= ( BOARD_SIZE / BOARD_GRID_SIZE - 1 ) )
+            if ( grid[a][b] == 1 && a >= 0 && a <= ( BOARD_SIZE / CELL_SIZE - 1 ) && b >= 0 && b <= ( BOARD_SIZE / CELL_SIZE - 1 ) )
             {
                 ncount++;
             }
