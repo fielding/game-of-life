@@ -1,0 +1,14 @@
+      .emscripten { padding-right: 0; margin-left: auto; margin-right: auto; display: block; }
+      textarea.emscripten { font-family: monospace; width: 80%; display: none; }
+      div.emscripten { text-align: center; }
+      div.emscripten_border { border: 0px none; }
+      /* the canvas *must not* have any border or padding, or mouse coords will be wrong */
+      canvas.emscripten { border: 0px none; }
+
+      a:link, a:visited, a:active {color:#000000; text-decoration: none;}
+      a:hover {color:#9477ca;}  
+
+
+      p { font-family: "Courier New", Courier, monospace; text-align: center; }
+      p.title { font-size: 12px; }
+      p.footer { font-size: 11px; }
