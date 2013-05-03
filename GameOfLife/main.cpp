@@ -7,44 +7,73 @@
 //
 
 #include <iostream>
+
 #include "SDL.h"
 #include "SDL_image.h"
 #include "SDL_rotozoom.h"
+
+#ifdef EMSCRIPTEN
+#include "emscripten.h"
+#endif 
 
 using namespace std;
 
 #define DEBUGINFO 0
 
-#define CELL_SIZE 8      // length and width (in pixels) for the square cells
-#define BOARD_SIZE 1600    // Length and width for the square viewing area
-#define SCREEN_BPP 8      // Screen bits per-pixels
+#define CELL_SIZE 16      // length and width (in pixels) for the square cells
+#define BOARD_SIZE 800    // Length and width for the square viewing area
+#define SCREEN_BPP 32      // Screen bits per-pixels
 
+bool running = true;
 
 int grid[BOARD_SIZE / CELL_SIZE][BOARD_SIZE / CELL_SIZE];       // Create a grid based on total board size and each cell size
 int bufferGrid[BOARD_SIZE / CELL_SIZE][BOARD_SIZE / CELL_SIZE];
 
-int spawn();
-int draw();
-int update();
-int checkNeighbors( int x, int y );
-void fillCell( Sint16 x, Sint16 y, Uint16 w, Uint16 h, int color );
+void init();
 
-// Surfaces
+void handleEvents();
+void update();
+void draw();
+
+void mainloop(); // main loop wrapper for Emscripten
+
+void spawn();
+int checkNeighbors( int x, int y );
+void fillCell( Sint16 x, Sint16 y, Uint16 w, Uint16 h, Uint32 color );
+
+// SDL Objects
 SDL_Surface *screen = NULL;
 SDL_Surface *image = NULL;
 SDL_Surface *scaledImage = NULL;
 
-// Event structure
 SDL_Event event;
 
 int main ( int argc, char **argv )
 {
-  bool exit = false;
+  init();
   
-  if ( SDL_Init( SDL_INIT_EVERYTHING ) == -1 )
+  #ifdef EMSCRIPTEN
+    emscripten_set_main_loop(mainloop, 10, 1);
+    SDL_FreeSurface( image );
+  #else
+    while ( running )
+    {
+      mainloop();
+     SDL_Delay( 500 );   // wait .5 seconds
+    }
+
+    SDL_FreeSurface( scaledImage );
+  #endif
+
+  SDL_Quit();
+  return 0;
+}
+
+void init()
+{
+    if ( SDL_Init( SDL_INIT_EVERYTHING ) == -1 )
   {
     printf( "SDL_Init: %s\n", SDL_GetError() );
-    return 1;
   }
   
   screen = SDL_SetVideoMode( BOARD_SIZE, BOARD_SIZE, SCREEN_BPP, SDL_SWSURFACE );
@@ -52,30 +81,42 @@ int main ( int argc, char **argv )
   if ( screen == NULL )
   {
     printf( "SDL_SetVideoMode: %s\n", SDL_GetError() );
-    return 1;
   }
   
   SDL_WM_SetCaption( "Conway's Game of Life", NULL);
 
-  image = IMG_Load( "GameOfLife.app/Contents/Resources/creep.png" );
+  image = IMG_Load( "creep.png" );
     
   if ( !image )
   {
     printf( "IMG_Load: %s\n", IMG_GetError() );
   }
-  
-  scaledImage = rotozoomSurface(image, 0, ( float( CELL_SIZE ) / 16), 0);   // Scale cell image to cell size (16 is based on original png being 16px)
-  SDL_FreeSurface( image );   // Finished with image, can free it back up
-  
-  
+  else
+  {
+
+#ifdef EMSCRIPTEN
+      scaledImage = image;
+#else
+      scaledImage = rotozoomSurface(image, 0, ( float( CELL_SIZE ) / 16), 0);   // Scale cell image to cell size (16 is based on original png being 16px)
+      SDL_FreeSurface( image );   // Finished with image, can free it back up
+#endif 
+
+  }
+
   spawn();    // spawn initial cell data
   draw();     // draw the initial board
-  
-  while ( exit == false )
-  {
+
+}
+
+void mainloop()
+{
+    handleEvents();
     update();
     draw();
+}
 
+void handleEvents()
+{
     while ( SDL_PollEvent( &event ) )
     {
       if ( event.type == SDL_KEYDOWN )   // If a Key was pressed
@@ -83,7 +124,7 @@ int main ( int argc, char **argv )
         switch ( event.key.keysym.sym )
         {
           case SDLK_ESCAPE:   // If key pressed was escape
-            exit = true;      // exit the program
+            running = false;      // exit the program
             break;
           case SDLK_UP:       // If key pressed was up arrow
             break;
@@ -94,61 +135,12 @@ int main ( int argc, char **argv )
         }
       } else if ( event.type == SDL_QUIT )
       {
-        exit = true;    // exit the program
+        running = false;    // exit the program
       }
     }
-    SDL_Delay( 500 );   // wait .5 seconds
-  }
-  
-  SDL_FreeSurface( scaledImage );
-  SDL_Quit();
-  return 0;
 }
 
-int spawn()
-{
-  // fill the array with random cells
-  int rando = 0;
-  srand(( unsigned )time( NULL ));
-    
-  for ( int x = 0; x < BOARD_SIZE / CELL_SIZE; x++ )
-  {
-    for ( int y = 0; y < BOARD_SIZE / CELL_SIZE; y++ )
-    {
-      rando = rand() % 2;
-      grid[x][y] = rando;
-      if ( DEBUGINFO ){ cout<<"Setting square at "<<x<<","<<y<<" to "<<grid[x][y]<<"\n"; }
-    }
-  }
-  return 0;
-}
-
-int draw()
-{
-  for ( int x = 0; x < BOARD_SIZE / CELL_SIZE; x++ )
-  {
-    for ( int y = 0; y < BOARD_SIZE / CELL_SIZE; y++ )
-    {
-      if ( grid[x][y] == 1 )
-      {
-        // Scalable (web-scale lol) images of creeps for the cells
-        SDL_Rect offset;
-        offset.x = x * CELL_SIZE;
-        offset.y = y * CELL_SIZE;
-        
-        SDL_BlitSurface( scaledImage, NULL, screen, &offset );
-      
-      } else
-      {
-        fillCell( CELL_SIZE * x, CELL_SIZE * y, CELL_SIZE, CELL_SIZE, 0x000000 );
-      }
-    }
-  }
-    SDL_Flip( screen );
-    return 0;
-}
-
-int update()
+void update()
 {
     // Rules:
     // 1. Any live cell with fewer than two live neighbours dies, as if caused by under-population.
@@ -190,7 +182,47 @@ int update()
             grid[x][y] = bufferGrid[x][y];
         }
     }
-    return 0;
+}
+
+void draw()
+{
+  for ( int x = 0; x < BOARD_SIZE / CELL_SIZE; x++ )
+  {
+    for ( int y = 0; y < BOARD_SIZE / CELL_SIZE; y++ )
+    {
+      if ( grid[x][y] == 1 )
+      {
+        // Scalable (web-scale lol) images of creeps for the cells
+        SDL_Rect offset;
+        offset.x = x * CELL_SIZE;
+        offset.y = y * CELL_SIZE;
+        
+        SDL_BlitSurface( scaledImage, NULL, screen, &offset );
+      
+      } else
+      {
+        fillCell( CELL_SIZE * x, CELL_SIZE * y, CELL_SIZE, CELL_SIZE, SDL_MapRGBA(screen->format, 0, 0, 0, 255) );
+      }
+    }
+  }
+    SDL_Flip( screen );
+}
+
+void spawn()
+{
+  // fill the array with random cells
+  int rando = 0;
+  srand(( unsigned )time( NULL ));
+    
+  for ( int x = 0; x < BOARD_SIZE / CELL_SIZE; x++ )
+  {
+    for ( int y = 0; y < BOARD_SIZE / CELL_SIZE; y++ )
+    {
+      rando = rand() % 2;
+      grid[x][y] = rando;
+      if ( DEBUGINFO ){ cout<<"Setting square at "<<x<<","<<y<<" to "<<grid[x][y]<<"\n"; }
+    }
+  }
 }
 
 int checkNeighbors( int x, int y )
@@ -214,7 +246,7 @@ int checkNeighbors( int x, int y )
     return ncount;
 }
 
-void fillCell( Sint16 x, Sint16 y, Uint16 w, Uint16 h, int color )
+void fillCell( Sint16 x, Sint16 y, Uint16 w, Uint16 h, Uint32 color )
 {
     SDL_Rect rect = { x,y,w,h };
     SDL_FillRect( screen, &rect, color );
