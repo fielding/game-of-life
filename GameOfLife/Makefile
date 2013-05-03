@@ -18,7 +18,7 @@ Win:
 	$(CCWIN) -o $(BIN)$(OUTPUT).exe $(OBJS) $(SDL_MINGW_CFLAGS) $(SDL_MINGW_LIBS)
 
 HTML:
-	$(EMCC) $(OBJS) --preload-file $(PRELOADED) -o public/$(OUTPUT).html 
+	$(EMCC) $(OBJS) --preload-file $(PRELOADED) -o public/$(OUTPUT).html
 
 JS:
-	$(EMCC) $(OBJS) --pre-js js/$(PREJS) --preload-file $(PRELOADED) -o public/$(OUTPUT).js  
+	$(EMCC) $(OBJS) --pre-js js/$(PREJS) --preload-file $(PRELOADED) -o public/$(OUTPUT).js
