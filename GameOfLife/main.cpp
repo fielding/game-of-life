@@ -76,7 +76,7 @@ void init()
     printf( "SDL_Init: %s\n", SDL_GetError() );
   }
   
-  screen = SDL_SetVideoMode( BOARD_SIZE, BOARD_SIZE, SCREEN_BPP, SDL_SWSURFACE );
+  screen = SDL_SetVideoMode( BOARD_SIZE, BOARD_SIZE, SCREEN_BPP, SDL_SWSURFACE | SDL_RESIZABLE);
         
   if ( screen == NULL )
   {
