@@ -1,0 +1,3 @@
+[submodule "GameOfLife/public"]
+	path = GameOfLife/public
+	url = git@github.com:justfielding/GameOfLife.git
