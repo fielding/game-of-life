@@ -13,12 +13,12 @@
 		C26A71731751A61F00D5EA02 /* bglight.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = C26A71701751A60F00D5EA02 /* bglight.png */; };
 		C26A71741751A62100D5EA02 /* bgdark.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = C26A716F1751A60F00D5EA02 /* bgdark.png */; };
 		C26A71761751B89100D5EA02 /* creep.icns in Resources */ = {isa = PBXBuildFile; fileRef = C26A71751751B89100D5EA02 /* creep.icns */; };
-		C27647EA1CDA83DC00928074 /* libSDL_gfx.15.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C27647E91CDA83DC00928074 /* libSDL_gfx.15.dylib */; };
-		C2AE13A21734453000B1F961 /* libSDL_image-1.2.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C2AE139F1734453000B1F961 /* libSDL_image-1.2.0.dylib */; };
 		C2AE13A31734453000B1F961 /* libSDL-1.2.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C2AE13A01734453000B1F961 /* libSDL-1.2.0.dylib */; };
 		C2AE13AC173445D500B1F961 /* creep.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = C2AE13A9173445AF00B1F961 /* creep.png */; };
 		C2F03E5516F1E747002423AF /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2F03E5416F1E747002423AF /* Cocoa.framework */; };
 		C2F03E7516F1E77C002423AF /* SDLMain.m in Sources */ = {isa = PBXBuildFile; fileRef = C2F03E7416F1E77C002423AF /* SDLMain.m */; };
+		C2F0AFC21CE3707900BD6F61 /* libSDL_image-1.2.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C2F0AFC11CE3707900BD6F61 /* libSDL_image-1.2.0.dylib */; };
+		C2F0AFC41CE3709F00BD6F61 /* libSDL_gfx.15.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C2F0AFC31CE3709F00BD6F61 /* libSDL_gfx.15.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -50,9 +50,6 @@
 		C26A716F1751A60F00D5EA02 /* bgdark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bgdark.png; path = assets/img/bgdark.png; sourceTree = "<group>"; };
 		C26A71701751A60F00D5EA02 /* bglight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bglight.png; path = assets/img/bglight.png; sourceTree = "<group>"; };
 		C26A71751751B89100D5EA02 /* creep.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = creep.icns; sourceTree = "<group>"; };
-		C27647E91CDA83DC00928074 /* libSDL_gfx.15.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libSDL_gfx.15.dylib; path = ../../../usr/local/Cellar/sdl_gfx/2.0.25/lib/libSDL_gfx.15.dylib; sourceTree = "<group>"; };
-		C2AE139E1734453000B1F961 /* libSDL_gfx.13.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libSDL_gfx.13.dylib; path = /usr/local/Cellar/sdl_gfx/2.0.24/lib/libSDL_gfx.13.dylib; sourceTree = "<absolute>"; };
-		C2AE139F1734453000B1F961 /* libSDL_image-1.2.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libSDL_image-1.2.0.dylib"; path = "/usr/local/Cellar/sdl_image/1.2.12/lib/libSDL_image-1.2.0.dylib"; sourceTree = "<absolute>"; };
 		C2AE13A01734453000B1F961 /* libSDL-1.2.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libSDL-1.2.0.dylib"; path = "/usr/local/Cellar/sdl/1.2.15/lib/libSDL-1.2.0.dylib"; sourceTree = "<absolute>"; };
 		C2AE13A7173445A600B1F961 /* creep.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = creep.icns; path = assets/icn/creep.icns; sourceTree = "<group>"; };
 		C2AE13A9173445AF00B1F961 /* creep.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = creep.png; path = assets/img/creep.png; sourceTree = "<group>"; };
@@ -64,6 +61,8 @@
 		C2F03E5C16F1E747002423AF /* GameOfLife-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GameOfLife-Info.plist"; sourceTree = "<group>"; };
 		C2F03E7316F1E77C002423AF /* SDLMain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDLMain.h; path = "/Library/Frameworks/SDL.framework/devel-lite/SDLMain.h"; sourceTree = "<absolute>"; };
 		C2F03E7416F1E77C002423AF /* SDLMain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDLMain.m; path = "/Library/Frameworks/SDL.framework/devel-lite/SDLMain.m"; sourceTree = "<absolute>"; };
+		C2F0AFC11CE3707900BD6F61 /* libSDL_image-1.2.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libSDL_image-1.2.0.dylib"; path = "../../../../../usr/local/Cellar/sdl_image/1.2.10_2/lib/libSDL_image-1.2.0.dylib"; sourceTree = "<group>"; };
+		C2F0AFC31CE3709F00BD6F61 /* libSDL_gfx.15.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libSDL_gfx.15.dylib; path = ../../../../../usr/local/Cellar/sdl_gfx/2.0.25/lib/libSDL_gfx.15.dylib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,10 +70,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C27647EA1CDA83DC00928074 /* libSDL_gfx.15.dylib in Frameworks */,
-				C2AE13A21734453000B1F961 /* libSDL_image-1.2.0.dylib in Frameworks */,
+				C2F0AFC41CE3709F00BD6F61 /* libSDL_gfx.15.dylib in Frameworks */,
 				C2AE13A31734453000B1F961 /* libSDL-1.2.0.dylib in Frameworks */,
 				C2F03E5516F1E747002423AF /* Cocoa.framework in Frameworks */,
+				C2F0AFC21CE3707900BD6F61 /* libSDL_image-1.2.0.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -129,9 +128,8 @@
 		C2F03E5316F1E747002423AF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				C27647E91CDA83DC00928074 /* libSDL_gfx.15.dylib */,
-				C2AE139E1734453000B1F961 /* libSDL_gfx.13.dylib */,
-				C2AE139F1734453000B1F961 /* libSDL_image-1.2.0.dylib */,
+				C2F0AFC11CE3707900BD6F61 /* libSDL_image-1.2.0.dylib */,
+				C2F0AFC31CE3709F00BD6F61 /* libSDL_gfx.15.dylib */,
 				C2AE13A01734453000B1F961 /* libSDL-1.2.0.dylib */,
 				C2F03E5416F1E747002423AF /* Cocoa.framework */,
 				C2F03E5616F1E747002423AF /* Other Frameworks */,
@@ -328,6 +326,7 @@
 					/Library/Frameworks/SDL.framework/Headers,
 					/Library/Frameworks/SDL_image.framework/Headers,
 					/usr/local/include/,
+					/usr/local/Cellar/sdl_image/1.2.10_2/include/SDL,
 				);
 				INFOPLIST_FILE = "GameOfLife/GameOfLife-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
@@ -335,6 +334,7 @@
 					/usr/local/Cellar/sdl_image/1.2.12_2/lib,
 					/usr/local/Cellar/sdl/1.2.15/lib,
 					/usr/local/Cellar/sdl_gfx/2.0.25/lib,
+					/usr/local/Cellar/sdl_image/1.2.10_2/lib,
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "justFiedling.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -353,6 +353,7 @@
 					/Library/Frameworks/SDL.framework/Headers,
 					/Library/Frameworks/SDL_image.framework/Headers,
 					/usr/local/include/,
+					/usr/local/Cellar/sdl_image/1.2.10_2/include/SDL,
 				);
 				INFOPLIST_FILE = "GameOfLife/GameOfLife-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
@@ -360,6 +361,7 @@
 					/usr/local/Cellar/sdl_image/1.2.12_2/lib,
 					/usr/local/Cellar/sdl/1.2.15/lib,
 					/usr/local/Cellar/sdl_gfx/2.0.25/lib,
+					/usr/local/Cellar/sdl_image/1.2.10_2/lib,
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "justFiedling.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
