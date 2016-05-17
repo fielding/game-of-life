@@ -1,8 +1,7 @@
-GameOfLife
-==========
+# game-of-life
 
 Conway's Game of Life in C++
 
 Also, compiled to Javascript via emscripten.
 
-Javascript Demo here: http://justfielding.com/GameOfLife/
+[Javascript Version](https://justfielding.github.io/game-of-life)
