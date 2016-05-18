@@ -27,22 +27,22 @@ using namespace std;
 
 #define DEBUGINFO 0
 
-#define CELL_SIZE 16      // length and width (in pixels) for the square cells
+#define CELL_SIZE 8        // length and width (in pixels) for the square cells
 #define BOARD_SIZE 800    // Length and width for the square viewing area
 #define SCREEN_BPP 32      // Screen bits per-pixels
 
 
 
 #ifdef APP
-#define IMG_CREEP "GameOfLife.app/Contents/Resources/img/pink.png"
+#define IMG_CELL "GameOfLife.app/Contents/Resources/img/pink.png"
 #define BG_LIGHT "GameOfLife.app/Contents/Resources/img/bglight.png"
 #define BG_DARK "GameOfLife.app/Contents/Resources/img/bgdark.png"
 #elif __MINGW32__
-#define IMG_CREEP "pink.png"
+#define IMG_CELL "pink.png"
 #define BG_LIGHT "bglight.png"
 #define BG_DARK "bgdark.png"
 #else
-#define IMG_CREEP "assets/img/pink.png"
+#define IMG_CELL "assets/img/pink.png"
 #define BG_LIGHT "assets/img/bglight.png"
 #define BG_DARK "assets/img/bgdark.png"
 #endif
@@ -84,7 +84,7 @@ int main ( int argc, char **argv )
     while ( running )
     {
       mainloop();
-     SDL_Delay( 500 );   // wait .5 seconds
+      SDL_Delay( 500 );   // wait .5 seconds
     }
 
     SDL_FreeSurface( scaledImage );
@@ -110,7 +110,7 @@ void init()
   
   SDL_WM_SetCaption( "Conway's Game of Life", NULL);
 
-  image = IMG_Load(IMG_CREEP);
+  image = IMG_Load(IMG_CELL);
   bgLight = IMG_Load(BG_LIGHT);
   bgDark = IMG_Load(BG_DARK);
     
@@ -177,7 +177,8 @@ void update()
     // 2. Any live cell with two or three live neighbours lives on to the next generation.
     // 3. Any live cell with more than three live neighbours dies, as if by overcrowding.
     // 4. Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.
-    
+  
+  
     for ( int x = 0; x < BOARD_SIZE / CELL_SIZE; x++ )
     {
         for ( int y = 0; y < BOARD_SIZE / CELL_SIZE; y++ )
