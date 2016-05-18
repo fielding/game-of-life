@@ -34,15 +34,15 @@ using namespace std;
 
 
 #ifdef APP
-#define IMG_CREEP "GameOfLife.app/Contents/Resources/img/creep.png"
+#define IMG_CREEP "GameOfLife.app/Contents/Resources/img/pink.png"
 #define BG_LIGHT "GameOfLife.app/Contents/Resources/img/bglight.png"
 #define BG_DARK "GameOfLife.app/Contents/Resources/img/bgdark.png"
 #elif __MINGW32__
-#define IMG_CREEP "creep.png"
+#define IMG_CREEP "pink.png"
 #define BG_LIGHT "bglight.png"
 #define BG_DARK "bgdark.png"
 #else
-#define IMG_CREEP "assets/img/creep.png"
+#define IMG_CREEP "assets/img/pink.png"
 #define BG_LIGHT "assets/img/bglight.png"
 #define BG_DARK "assets/img/bgdark.png"
 #endif
