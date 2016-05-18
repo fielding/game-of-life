@@ -43,18 +43,18 @@ const int SCREEN_TICKS_PER_FRAME = 1000 / SCREEN_FPS;
 #define IMG_CELL "GameOfLife.app/Contents/Resources/img/pink.png"
 #define BG_LIGHT "GameOfLife.app/Contents/Resources/img/bglight.png"
 #define BG_DARK "GameOfLife.app/Contents/Resources/img/bgdark.png"
-#define FONT_COMFORTAA "GameOfLife.app/Contents/Resources/font/Comfortaa-Bold.ttf"
+#define FONT_COMFORTAA "GameOfLife.app/Contents/Resources/font/Comfortaa-Regular.ttf"
 #elif __MINGW32__
 #define IMG_CELL "pink.png"
 #define BG_LIGHT "bglight.png"
 #define BG_DARK "bgdark.png"
-#define FONT_COMFORTAA "Comfortaa-Bold.ttf"
+#define FONT_COMFORTAA "Comfortaa-Regular.ttf"
 
 #else
 #define IMG_CELL "assets/img/pink.png"
 #define BG_LIGHT "assets/img/bglight.png"
 #define BG_DARK "assets/img/bgdark.png"
-#define FONT_COMFORTAA "assests/font/Comfortaa-Bold.ttf"
+#define FONT_COMFORTAA "assests/font/Comfortaa-Regular.ttf"
 
 #endif
 
