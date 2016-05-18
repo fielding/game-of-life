@@ -7,6 +7,7 @@
 //
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
+#include <SDL2/SDL_ttf.h>
 
 #include "texture.h"
 
@@ -69,6 +70,32 @@ bool Texture::loadFromFile( std::string path, SDL_Renderer* renderer )
   }
   
   mTexture = newTexture;
+  return mTexture != NULL;
+}
+
+bool Texture::loadFromRenderedText( std::string textureText, SDL_Color textColor, TTF_Font* font, SDL_Renderer* renderer )
+{
+  free();
+  
+  SDL_Surface* textSurface = TTF_RenderText_Solid( font, textureText.c_str(), textColor );
+  if ( textSurface == NULL )
+  {
+    printf( "Unable to render text surface! SDL_ttf Error: %s\n", TTF_GetError() );
+  }
+  else
+  {
+    mTexture = SDL_CreateTextureFromSurface( renderer, textSurface );
+    if ( mTexture == NULL )
+    {
+      printf( "Unable to create texture from rendered text! SDL Error: %s\n", SDL_GetError() );
+    }
+    else
+    {
+      mWidth = textSurface->w;
+      mHeight = textSurface->h;
+    }
+    SDL_FreeSurface( textSurface );
+  }
   return mTexture != NULL;
 }
 

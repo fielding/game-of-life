@@ -43,14 +43,19 @@ const int SCREEN_TICKS_PER_FRAME = 1000 / SCREEN_FPS;
 #define IMG_CELL "GameOfLife.app/Contents/Resources/img/pink.png"
 #define BG_LIGHT "GameOfLife.app/Contents/Resources/img/bglight.png"
 #define BG_DARK "GameOfLife.app/Contents/Resources/img/bgdark.png"
+#define FONT_COMFORTAA "GameOfLife.app/Contents/Resources/font/Comfortaa-Bold.ttf"
 #elif __MINGW32__
 #define IMG_CELL "pink.png"
 #define BG_LIGHT "bglight.png"
 #define BG_DARK "bgdark.png"
+#define FONT_COMFORTAA "Comfortaa-Bold.ttf"
+
 #else
 #define IMG_CELL "assets/img/pink.png"
 #define BG_LIGHT "assets/img/bglight.png"
 #define BG_DARK "assets/img/bgdark.png"
+#define FONT_COMFORTAA "assests/font/Comfortaa-Bold.ttf"
+
 #endif
 
 bool running = true;
@@ -80,10 +85,13 @@ SDL_Texture* loadTexture(std::string path);
 SDL_Window *window = NULL;
 SDL_Renderer *renderer = NULL;
 SDL_Event event;
+TTF_Font *font = NULL;
+SDL_Color textColor = { 255, 255, 255 };
 
 Texture cell;
 Texture bg_light;
 Texture bg_dark;
+Texture fpsTextTexture;
 Timer fpsTimer;
 Timer frameticks;
 
@@ -127,6 +135,12 @@ bool init()
           printf( "SDL_image could not initialize! SDL_image Error: %s\n", IMG_GetError() );
           initialized = false;
         }
+        
+        if( TTF_Init() == -1 )
+        {
+          printf( "SDL_ttf could not initialize! SDL_ttf Error: %s\n", TTF_GetError() );
+          initialized = false;
+        }
       }
     }
   }
@@ -139,11 +153,15 @@ void quit()
   bg_light.free();
   bg_dark.free();
   
+  TTF_CloseFont( font );
+  font = NULL;
+  
   SDL_DestroyRenderer( renderer );
   SDL_DestroyWindow( window );
   renderer = NULL;
   window = NULL;
   
+  TTF_Quit();
   IMG_Quit();
   SDL_Quit();
 }
@@ -167,6 +185,13 @@ bool loadAssets()
   if ( !bg_dark.loadFromFile( BG_DARK, renderer ) )
   {
     printf( "Failed to load %s\n", BG_DARK );
+    loaded = false;
+  }
+  
+  font = TTF_OpenFont( FONT_COMFORTAA, 28 );
+  if ( font == NULL )
+  {
+    printf( "Failed to laod comfortaa font! SDL_ttf Error: %s\n", TTF_GetError() );
     loaded = false;
   }
   return loaded;
@@ -201,11 +226,10 @@ void mainloop()
     avgFPS = 0;
   }
   
-  printf( "Average Frames Per Second %f\n", avgFPS);
-  
-    handleEvents();
-    update();
-    draw(TEXTURES);
+  fpsTextTexture.loadFromRenderedText( to_string(avgFPS), textColor, font, renderer );
+  handleEvents();
+  update();
+  draw(TEXTURES);
 }
 
 void handleEvents()
@@ -282,7 +306,7 @@ void update()
             grid[x][y] = bufferGrid[x][y];
         }
     }
-  generation++;
+  ++generation;
 }
 
 void draw(bool textures)
@@ -331,7 +355,8 @@ void draw(bool textures)
       }
     }
   }
-
+  fpsTextTexture.render( ( BOARD_SIZE - fpsTextTexture.getWidth() ) /  2, (BOARD_SIZE - fpsTextTexture.getHeight() ) / 2, renderer);
+  
   SDL_RenderPresent( renderer );
   framecount++;
 }

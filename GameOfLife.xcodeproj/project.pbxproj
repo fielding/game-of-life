@@ -18,12 +18,28 @@
 		C26C61011CEC884D00C3B681 /* libSDL2_gfx.dylib in Copy Files */ = {isa = PBXBuildFile; fileRef = C26C60FF1CEC87F500C3B681 /* libSDL2_gfx.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		C26C61021CEC884D00C3B681 /* libSDL2_image.dylib in Copy Files */ = {isa = PBXBuildFile; fileRef = C26C60FD1CEC87F000C3B681 /* libSDL2_image.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		C26C61031CEC884D00C3B681 /* libSDL2.dylib in Copy Files */ = {isa = PBXBuildFile; fileRef = C26C60FB1CEC87E700C3B681 /* libSDL2.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		C26C61071CECF77100C3B681 /* timer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C26C61061CECF77100C3B681 /* timer.cpp */; };
+		C26C61091CED050C00C3B681 /* libSDL2_ttf.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C26C61081CED050C00C3B681 /* libSDL2_ttf.dylib */; };
+		C26C610A1CED052700C3B681 /* libSDL2_ttf.dylib in Copy Files */ = {isa = PBXBuildFile; fileRef = C26C61081CED050C00C3B681 /* libSDL2_ttf.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		C26C610D1CED06C400C3B681 /* texture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C26C610B1CED06C400C3B681 /* texture.cpp */; };
+		C26C610F1CED145200C3B681 /* font in Resources */ = {isa = PBXBuildFile; fileRef = C26C610E1CED145200C3B681 /* font */; };
+		C26C61121CED14ED00C3B681 /* Comfortaa-Regular.ttf in CopyFiles */ = {isa = PBXBuildFile; fileRef = C26C61111CED14ED00C3B681 /* Comfortaa-Regular.ttf */; };
 		C2809D8C1CEC2F62005D59C9 /* pink.png in Resources */ = {isa = PBXBuildFile; fileRef = C2809D8B1CEC2F62005D59C9 /* pink.png */; };
 		C2809D8D1CEC2F9F005D59C9 /* pink.png in Copy Files */ = {isa = PBXBuildFile; fileRef = C2809D8B1CEC2F62005D59C9 /* pink.png */; };
 		C2F03E5516F1E747002423AF /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2F03E5416F1E747002423AF /* Cocoa.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		C26C61101CED14E000C3B681 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = font;
+			dstSubfolderSpec = 7;
+			files = (
+				C26C61121CED14ED00C3B681 /* Comfortaa-Regular.ttf in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C2F03E7616F1E7CF002423AF /* Copy Files */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -31,6 +47,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				C26C61011CEC884D00C3B681 /* libSDL2_gfx.dylib in Copy Files */,
+				C26C610A1CED052700C3B681 /* libSDL2_ttf.dylib in Copy Files */,
 				C26C61021CEC884D00C3B681 /* libSDL2_image.dylib in Copy Files */,
 				C26C61031CEC884D00C3B681 /* libSDL2.dylib in Copy Files */,
 			);
@@ -59,6 +76,13 @@
 		C26C60FB1CEC87E700C3B681 /* libSDL2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libSDL2.dylib; path = ../../../../../usr/local/lib/libSDL2.dylib; sourceTree = "<group>"; };
 		C26C60FD1CEC87F000C3B681 /* libSDL2_image.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libSDL2_image.dylib; path = ../../../../../usr/local/lib/libSDL2_image.dylib; sourceTree = "<group>"; };
 		C26C60FF1CEC87F500C3B681 /* libSDL2_gfx.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libSDL2_gfx.dylib; path = ../../../../../usr/local/lib/libSDL2_gfx.dylib; sourceTree = "<group>"; };
+		C26C61051CECF6AC00C3B681 /* timer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = timer.h; path = src/timer.h; sourceTree = "<group>"; };
+		C26C61061CECF77100C3B681 /* timer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = timer.cpp; path = src/timer.cpp; sourceTree = "<group>"; };
+		C26C61081CED050C00C3B681 /* libSDL2_ttf.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libSDL2_ttf.dylib; path = ../../../../../usr/local/Cellar/sdl2_ttf/2.0.14/lib/libSDL2_ttf.dylib; sourceTree = "<group>"; };
+		C26C610B1CED06C400C3B681 /* texture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = texture.cpp; sourceTree = "<group>"; };
+		C26C610C1CED06C400C3B681 /* texture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = texture.h; sourceTree = "<group>"; };
+		C26C610E1CED145200C3B681 /* font */ = {isa = PBXFileReference; lastKnownFileType = folder; name = font; path = assets/font; sourceTree = "<group>"; };
+		C26C61111CED14ED00C3B681 /* Comfortaa-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Comfortaa-Regular.ttf"; path = "GameOfLife/assets/font/Comfortaa-Regular.ttf"; sourceTree = "<group>"; };
 		C2809D8B1CEC2F62005D59C9 /* pink.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pink.png; path = assets/img/pink.png; sourceTree = "<group>"; };
 		C2AE13A7173445A600B1F961 /* creep.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = creep.icns; path = assets/icn/creep.icns; sourceTree = "<group>"; };
 		C2F03E5116F1E747002423AF /* GameOfLife.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GameOfLife.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -75,6 +99,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C2F03E5516F1E747002423AF /* Cocoa.framework in Frameworks */,
+				C26C61091CED050C00C3B681 /* libSDL2_ttf.dylib in Frameworks */,
 				C26C60FE1CEC87F000C3B681 /* libSDL2_image.dylib in Frameworks */,
 				C26C60FC1CEC87E700C3B681 /* libSDL2.dylib in Frameworks */,
 				C26C61001CEC87F500C3B681 /* libSDL2_gfx.dylib in Frameworks */,
@@ -87,6 +112,7 @@
 		C2AE13A41734457200B1F961 /* assets */ = {
 			isa = PBXGroup;
 			children = (
+				C26C610E1CED145200C3B681 /* font */,
 				C2AE13A61734457900B1F961 /* icn */,
 				C2AE13A51734457500B1F961 /* img */,
 			);
@@ -114,6 +140,7 @@
 		C2F03E4816F1E747002423AF = {
 			isa = PBXGroup;
 			children = (
+				C26C61111CED14ED00C3B681 /* Comfortaa-Regular.ttf */,
 				C2F03E5A16F1E747002423AF /* GameOfLife */,
 				C2F03E5316F1E747002423AF /* Frameworks */,
 				C2F03E5216F1E747002423AF /* Products */,
@@ -133,6 +160,7 @@
 			children = (
 				C26C60FF1CEC87F500C3B681 /* libSDL2_gfx.dylib */,
 				C26C60FD1CEC87F000C3B681 /* libSDL2_image.dylib */,
+				C26C61081CED050C00C3B681 /* libSDL2_ttf.dylib */,
 				C26C60FB1CEC87E700C3B681 /* libSDL2.dylib */,
 				C2F03E5416F1E747002423AF /* Cocoa.framework */,
 				C2F03E5616F1E747002423AF /* Other Frameworks */,
@@ -154,6 +182,10 @@
 			isa = PBXGroup;
 			children = (
 				C26A716D1751A25600D5EA02 /* main.cpp */,
+				C26C61051CECF6AC00C3B681 /* timer.h */,
+				C26C61061CECF77100C3B681 /* timer.cpp */,
+				C26C610B1CED06C400C3B681 /* texture.cpp */,
+				C26C610C1CED06C400C3B681 /* texture.h */,
 				C2F03E5B16F1E747002423AF /* Supporting Files */,
 			);
 			path = GameOfLife;
@@ -180,6 +212,7 @@
 				C2F03E4F16F1E747002423AF /* Resources */,
 				C2F03E7616F1E7CF002423AF /* Copy Files */,
 				C2F03E7F16F1F339002423AF /* Copy Files */,
+				C26C61101CED14E000C3B681 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -224,6 +257,7 @@
 				C26A71711751A60F00D5EA02 /* bgdark.png in Resources */,
 				C2809D8C1CEC2F62005D59C9 /* pink.png in Resources */,
 				C26A71721751A60F00D5EA02 /* bglight.png in Resources */,
+				C26C610F1CED145200C3B681 /* font in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -234,7 +268,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C26C610D1CED06C400C3B681 /* texture.cpp in Sources */,
 				C26A716E1751A25600D5EA02 /* main.cpp in Sources */,
+				C26C61071CECF77100C3B681 /* timer.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -331,6 +367,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/usr/local/lib,
+					/usr/local/Cellar/sdl2_ttf/2.0.14/lib,
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "justFiedling.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -350,6 +387,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/usr/local/lib,
+					/usr/local/Cellar/sdl2_ttf/2.0.14/lib,
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "justFiedling.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";

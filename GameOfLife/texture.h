@@ -19,6 +19,7 @@ public:
   ~Texture();
 
   bool loadFromFile( std::string path, SDL_Renderer* renderer);
+  bool loadFromRenderedText( std::string textureText, SDL_Color textColor, TTF_Font* font, SDL_Renderer* renderer );
   
   void free();
   void render( int x, int y, SDL_Renderer* renderer, SDL_Rect* clip = NULL );
