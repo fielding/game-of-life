@@ -10,38 +10,44 @@
 		C26A716E1751A25600D5EA02 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C26A716D1751A25600D5EA02 /* main.cpp */; };
 		C26A71711751A60F00D5EA02 /* bgdark.png in Resources */ = {isa = PBXBuildFile; fileRef = C26A716F1751A60F00D5EA02 /* bgdark.png */; };
 		C26A71721751A60F00D5EA02 /* bglight.png in Resources */ = {isa = PBXBuildFile; fileRef = C26A71701751A60F00D5EA02 /* bglight.png */; };
-		C26A71731751A61F00D5EA02 /* bglight.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = C26A71701751A60F00D5EA02 /* bglight.png */; };
-		C26A71741751A62100D5EA02 /* bgdark.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = C26A716F1751A60F00D5EA02 /* bgdark.png */; };
-		C26A71761751B89100D5EA02 /* creep.icns in Resources */ = {isa = PBXBuildFile; fileRef = C26A71751751B89100D5EA02 /* creep.icns */; };
+		C26A71731751A61F00D5EA02 /* bglight.png in Copy Files */ = {isa = PBXBuildFile; fileRef = C26A71701751A60F00D5EA02 /* bglight.png */; };
+		C26A71741751A62100D5EA02 /* bgdark.png in Copy Files */ = {isa = PBXBuildFile; fileRef = C26A716F1751A60F00D5EA02 /* bgdark.png */; };
+		C26C60FC1CEC87E700C3B681 /* libSDL2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C26C60FB1CEC87E700C3B681 /* libSDL2.dylib */; };
+		C26C60FE1CEC87F000C3B681 /* libSDL2_image.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C26C60FD1CEC87F000C3B681 /* libSDL2_image.dylib */; };
+		C26C61001CEC87F500C3B681 /* libSDL2_gfx.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C26C60FF1CEC87F500C3B681 /* libSDL2_gfx.dylib */; };
+		C26C61011CEC884D00C3B681 /* libSDL2_gfx.dylib in Copy Files */ = {isa = PBXBuildFile; fileRef = C26C60FF1CEC87F500C3B681 /* libSDL2_gfx.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		C26C61021CEC884D00C3B681 /* libSDL2_image.dylib in Copy Files */ = {isa = PBXBuildFile; fileRef = C26C60FD1CEC87F000C3B681 /* libSDL2_image.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		C26C61031CEC884D00C3B681 /* libSDL2.dylib in Copy Files */ = {isa = PBXBuildFile; fileRef = C26C60FB1CEC87E700C3B681 /* libSDL2.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		C2809D8C1CEC2F62005D59C9 /* pink.png in Resources */ = {isa = PBXBuildFile; fileRef = C2809D8B1CEC2F62005D59C9 /* pink.png */; };
-		C2809D8D1CEC2F9F005D59C9 /* pink.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = C2809D8B1CEC2F62005D59C9 /* pink.png */; };
-		C2AE13A31734453000B1F961 /* libSDL-1.2.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C2AE13A01734453000B1F961 /* libSDL-1.2.0.dylib */; };
+		C2809D8D1CEC2F9F005D59C9 /* pink.png in Copy Files */ = {isa = PBXBuildFile; fileRef = C2809D8B1CEC2F62005D59C9 /* pink.png */; };
 		C2F03E5516F1E747002423AF /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2F03E5416F1E747002423AF /* Cocoa.framework */; };
-		C2F03E7516F1E77C002423AF /* SDLMain.m in Sources */ = {isa = PBXBuildFile; fileRef = C2F03E7416F1E77C002423AF /* SDLMain.m */; };
-		C2F0AFC21CE3707900BD6F61 /* libSDL_image-1.2.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C2F0AFC11CE3707900BD6F61 /* libSDL_image-1.2.0.dylib */; };
-		C2F0AFC41CE3709F00BD6F61 /* libSDL_gfx.15.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C2F0AFC31CE3709F00BD6F61 /* libSDL_gfx.15.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		C2F03E7616F1E7CF002423AF /* CopyFiles */ = {
+		C2F03E7616F1E7CF002423AF /* Copy Files */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				C26C61011CEC884D00C3B681 /* libSDL2_gfx.dylib in Copy Files */,
+				C26C61021CEC884D00C3B681 /* libSDL2_image.dylib in Copy Files */,
+				C26C61031CEC884D00C3B681 /* libSDL2.dylib in Copy Files */,
 			);
+			name = "Copy Files";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C2F03E7F16F1F339002423AF /* CopyFiles */ = {
+		C2F03E7F16F1F339002423AF /* Copy Files */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = img;
 			dstSubfolderSpec = 7;
 			files = (
-				C2809D8D1CEC2F9F005D59C9 /* pink.png in CopyFiles */,
-				C26A71731751A61F00D5EA02 /* bglight.png in CopyFiles */,
-				C26A71741751A62100D5EA02 /* bgdark.png in CopyFiles */,
+				C2809D8D1CEC2F9F005D59C9 /* pink.png in Copy Files */,
+				C26A71731751A61F00D5EA02 /* bglight.png in Copy Files */,
+				C26A71741751A62100D5EA02 /* bgdark.png in Copy Files */,
 			);
+			name = "Copy Files";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -50,9 +56,10 @@
 		C26A716D1751A25600D5EA02 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = src/main.cpp; sourceTree = "<group>"; };
 		C26A716F1751A60F00D5EA02 /* bgdark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bgdark.png; path = assets/img/bgdark.png; sourceTree = "<group>"; };
 		C26A71701751A60F00D5EA02 /* bglight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bglight.png; path = assets/img/bglight.png; sourceTree = "<group>"; };
-		C26A71751751B89100D5EA02 /* creep.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = creep.icns; sourceTree = "<group>"; };
+		C26C60FB1CEC87E700C3B681 /* libSDL2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libSDL2.dylib; path = ../../../../../usr/local/lib/libSDL2.dylib; sourceTree = "<group>"; };
+		C26C60FD1CEC87F000C3B681 /* libSDL2_image.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libSDL2_image.dylib; path = ../../../../../usr/local/lib/libSDL2_image.dylib; sourceTree = "<group>"; };
+		C26C60FF1CEC87F500C3B681 /* libSDL2_gfx.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libSDL2_gfx.dylib; path = ../../../../../usr/local/lib/libSDL2_gfx.dylib; sourceTree = "<group>"; };
 		C2809D8B1CEC2F62005D59C9 /* pink.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pink.png; path = assets/img/pink.png; sourceTree = "<group>"; };
-		C2AE13A01734453000B1F961 /* libSDL-1.2.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libSDL-1.2.0.dylib"; path = "/usr/local/Cellar/sdl/1.2.15/lib/libSDL-1.2.0.dylib"; sourceTree = "<absolute>"; };
 		C2AE13A7173445A600B1F961 /* creep.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = creep.icns; path = assets/icn/creep.icns; sourceTree = "<group>"; };
 		C2F03E5116F1E747002423AF /* GameOfLife.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GameOfLife.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2F03E5416F1E747002423AF /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
@@ -60,10 +67,6 @@
 		C2F03E5816F1E747002423AF /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		C2F03E5916F1E747002423AF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C2F03E5C16F1E747002423AF /* GameOfLife-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GameOfLife-Info.plist"; sourceTree = "<group>"; };
-		C2F03E7316F1E77C002423AF /* SDLMain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDLMain.h; path = "/Library/Frameworks/SDL.framework/devel-lite/SDLMain.h"; sourceTree = "<absolute>"; };
-		C2F03E7416F1E77C002423AF /* SDLMain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDLMain.m; path = "/Library/Frameworks/SDL.framework/devel-lite/SDLMain.m"; sourceTree = "<absolute>"; };
-		C2F0AFC11CE3707900BD6F61 /* libSDL_image-1.2.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libSDL_image-1.2.0.dylib"; path = "../../../../../usr/local/Cellar/sdl_image/1.2.10_2/lib/libSDL_image-1.2.0.dylib"; sourceTree = "<group>"; };
-		C2F0AFC31CE3709F00BD6F61 /* libSDL_gfx.15.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libSDL_gfx.15.dylib; path = ../../../../../usr/local/Cellar/sdl_gfx/2.0.25/lib/libSDL_gfx.15.dylib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,10 +74,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C2F0AFC41CE3709F00BD6F61 /* libSDL_gfx.15.dylib in Frameworks */,
-				C2AE13A31734453000B1F961 /* libSDL-1.2.0.dylib in Frameworks */,
 				C2F03E5516F1E747002423AF /* Cocoa.framework in Frameworks */,
-				C2F0AFC21CE3707900BD6F61 /* libSDL_image-1.2.0.dylib in Frameworks */,
+				C26C60FE1CEC87F000C3B681 /* libSDL2_image.dylib in Frameworks */,
+				C26C60FC1CEC87E700C3B681 /* libSDL2.dylib in Frameworks */,
+				C26C61001CEC87F500C3B681 /* libSDL2_gfx.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -111,7 +114,6 @@
 		C2F03E4816F1E747002423AF = {
 			isa = PBXGroup;
 			children = (
-				C26A71751751B89100D5EA02 /* creep.icns */,
 				C2F03E5A16F1E747002423AF /* GameOfLife */,
 				C2F03E5316F1E747002423AF /* Frameworks */,
 				C2F03E5216F1E747002423AF /* Products */,
@@ -129,9 +131,9 @@
 		C2F03E5316F1E747002423AF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				C2F0AFC11CE3707900BD6F61 /* libSDL_image-1.2.0.dylib */,
-				C2F0AFC31CE3709F00BD6F61 /* libSDL_gfx.15.dylib */,
-				C2AE13A01734453000B1F961 /* libSDL-1.2.0.dylib */,
+				C26C60FF1CEC87F500C3B681 /* libSDL2_gfx.dylib */,
+				C26C60FD1CEC87F000C3B681 /* libSDL2_image.dylib */,
+				C26C60FB1CEC87E700C3B681 /* libSDL2.dylib */,
 				C2F03E5416F1E747002423AF /* Cocoa.framework */,
 				C2F03E5616F1E747002423AF /* Other Frameworks */,
 			);
@@ -161,8 +163,6 @@
 			isa = PBXGroup;
 			children = (
 				C2AE13A41734457200B1F961 /* assets */,
-				C2F03E7316F1E77C002423AF /* SDLMain.h */,
-				C2F03E7416F1E77C002423AF /* SDLMain.m */,
 				C2F03E5C16F1E747002423AF /* GameOfLife-Info.plist */,
 			);
 			name = "Supporting Files";
@@ -178,8 +178,8 @@
 				C2F03E4D16F1E747002423AF /* Sources */,
 				C2F03E4E16F1E747002423AF /* Frameworks */,
 				C2F03E4F16F1E747002423AF /* Resources */,
-				C2F03E7616F1E7CF002423AF /* CopyFiles */,
-				C2F03E7F16F1F339002423AF /* CopyFiles */,
+				C2F03E7616F1E7CF002423AF /* Copy Files */,
+				C2F03E7F16F1F339002423AF /* Copy Files */,
 			);
 			buildRules = (
 			);
@@ -224,7 +224,6 @@
 				C26A71711751A60F00D5EA02 /* bgdark.png in Resources */,
 				C2809D8C1CEC2F62005D59C9 /* pink.png in Resources */,
 				C26A71721751A60F00D5EA02 /* bglight.png in Resources */,
-				C26A71761751B89100D5EA02 /* creep.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -235,7 +234,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C2F03E7516F1E77C002423AF /* SDLMain.m in Sources */,
 				C26A716E1751A25600D5EA02 /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -246,7 +244,7 @@
 		C2F03E6C16F1E747002423AF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
@@ -270,16 +268,18 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = (
-					/usr/local/include/SDL,
-					/usr/local/Cellar/sdl_gfx/2.0.25/include/SDL,
-				);
-				LIBRARY_SEARCH_PATHS = (
-					/usr/local/lib/,
-					/usr/local/Cellar/sdl_gfx/2.0.25/lib,
-				);
+				HEADER_SEARCH_PATHS = /usr/local/include;
+				LIBRARY_SEARCH_PATHS = /usr/local/lib;
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = (
+					"-I/usr/local/include",
+					"-D_THREAD_SAFE",
+				);
+				OTHER_LDFLAGS = (
+					"-L/usr/local/lib",
+					"-lSDL2",
+				);
 				SDKROOT = macosx;
 			};
 			name = Debug;
@@ -287,7 +287,7 @@
 		C2F03E6D16F1E747002423AF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
@@ -304,15 +304,17 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = (
-					/usr/local/include/SDL,
-					/usr/local/Cellar/sdl_gfx/2.0.25/include/SDL,
-				);
-				LIBRARY_SEARCH_PATHS = (
-					/usr/local/lib/,
-					/usr/local/Cellar/sdl_gfx/2.0.25/lib,
-				);
+				HEADER_SEARCH_PATHS = /usr/local/include;
+				LIBRARY_SEARCH_PATHS = /usr/local/lib;
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				OTHER_CFLAGS = (
+					"-I/usr/local/include",
+					"-D_THREAD_SAFE",
+				);
+				OTHER_LDFLAGS = (
+					"-L/usr/local/lib",
+					"-lSDL2",
+				);
 				SDKROOT = macosx;
 			};
 			name = Release;
@@ -324,18 +326,11 @@
 				FRAMEWORK_SEARCH_PATHS = /Library/Frameworks;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GameOfLife/GameOfLife-Prefix.pch";
-				HEADER_SEARCH_PATHS = (
-					/Library/Frameworks/SDL.framework/Headers,
-					/Library/Frameworks/SDL_image.framework/Headers,
-					/usr/local/include/,
-					/usr/local/Cellar/sdl_image/1.2.10_2/include/SDL,
-				);
+				HEADER_SEARCH_PATHS = /usr/local/include/SDL2;
 				INFOPLIST_FILE = "GameOfLife/GameOfLife-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					/usr/local/Cellar/sdl/1.2.15/lib,
-					/usr/local/Cellar/sdl_gfx/2.0.25/lib,
-					/usr/local/Cellar/sdl_image/1.2.10_2/lib,
+					/usr/local/lib,
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "justFiedling.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -350,18 +345,11 @@
 				FRAMEWORK_SEARCH_PATHS = /Library/Frameworks;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GameOfLife/GameOfLife-Prefix.pch";
-				HEADER_SEARCH_PATHS = (
-					/Library/Frameworks/SDL.framework/Headers,
-					/Library/Frameworks/SDL_image.framework/Headers,
-					/usr/local/include/,
-					/usr/local/Cellar/sdl_image/1.2.10_2/include/SDL,
-				);
+				HEADER_SEARCH_PATHS = /usr/local/include/SDL2;
 				INFOPLIST_FILE = "GameOfLife/GameOfLife-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					/usr/local/Cellar/sdl/1.2.15/lib,
-					/usr/local/Cellar/sdl_gfx/2.0.25/lib,
-					/usr/local/Cellar/sdl_image/1.2.10_2/lib,
+					/usr/local/lib,
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "justFiedling.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";

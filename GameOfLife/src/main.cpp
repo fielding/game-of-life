@@ -9,11 +9,11 @@
 #include <iostream>
 #include <time.h>
 
-#include "SDL.h"
-#include "SDL_image.h"
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_image.h>
 
 #ifndef __MINGW32__
-#include "SDL/SDL_rotozoom.h"
+//#include "SDL/SDL_rotozoom.h"
 #else
 #include "Windows.h"
 #endif
@@ -21,17 +21,16 @@
 #ifdef EMSCRIPTEN
 #include "emscripten.h"
 #include "SDL_rotozoom.h"
-#endif 
+#endif
 
 using namespace std;
 
 #define DEBUGINFO 0
+#define TEXTURES 1
 
 #define CELL_SIZE 8         // length and width (in pixels) for the square cells
-#define BOARD_SIZE 800     // Length and width for the square viewing area
+#define BOARD_SIZE 1600     // Length and width for the square viewing area
 #define SCREEN_BPP 32       // Screen bits per-pixels
-
-
 
 #ifdef APP
 #define IMG_CELL "GameOfLife.app/Contents/Resources/img/pink.png"
@@ -48,105 +47,148 @@ using namespace std;
 #endif
 
 bool running = true;
-
-int prevGrid[BOARD_SIZE / CELL_SIZE][BOARD_SIZE / CELL_SIZE];
-int grid[BOARD_SIZE / CELL_SIZE][BOARD_SIZE / CELL_SIZE];       // Create a grid based on total board size and each cell size
+int grid[BOARD_SIZE / CELL_SIZE][BOARD_SIZE / CELL_SIZE];
 int bufferGrid[BOARD_SIZE / CELL_SIZE][BOARD_SIZE / CELL_SIZE];
+int generation = 0;
 
-void init();
+bool init();
+void quit();
+
+bool loadAssets();
+
+void spawn();
 
 void handleEvents();
 void update();
-void draw();
-void filldraw();
+void draw(bool textures = false);
 
 void mainloop(); // main loop wrapper for Emscripten
 
-void spawn();
 int checkNeighbors( int x, int y );
-
-void fillCell( Sint16 x, Sint16 y, Uint16 w, Uint16 h, Uint32 color );
-SDL_Surface* loadSurface(std::string path);
+void drawCell( Sint16 x, Sint16 y, Uint16 w, Uint16 h, Uint8 r, Uint8 g, Uint8 b, Uint8 a);
+SDL_Texture* loadTexture(std::string path);
 
 // SDL Objects
-SDL_Surface *screen = NULL;
-SDL_Surface *image = NULL;
-SDL_Surface *scaledImage = NULL;
-SDL_Surface *bgLight = NULL;
-SDL_Surface *bgDark = NULL;
-
+SDL_Window *window = NULL;
+SDL_Renderer *renderer = NULL;
+SDL_Texture *cell = NULL;
+SDL_Texture *bg_light = NULL;
+SDL_Texture *bg_dark = NULL;
 SDL_Event event;
 
-int main ( int argc, char **argv )
+bool init()
 {
-  init();
-  
-  #ifdef EMSCRIPTEN
-    emscripten_set_main_loop(mainloop, 10, 1);
-    SDL_FreeSurface( image );
-  #else
-    while ( running )
-    {
-      mainloop();
-      SDL_Delay( 500 );   // wait .5 seconds
-    }
-
-    SDL_FreeSurface( scaledImage );
-  #endif
-
-  SDL_Quit();
-  return 0;
-}
-
-void init()
-{
-    if ( SDL_Init( SDL_INIT_EVERYTHING ) == -1 )
+  bool initialized = true;
+  if ( SDL_Init( SDL_INIT_VIDEO ) < 0 )
   {
-    printf( "SDL_Init: %s\n", SDL_GetError() );
-  }
-  
-  screen = SDL_SetVideoMode( BOARD_SIZE, BOARD_SIZE, SCREEN_BPP, SDL_SWSURFACE | SDL_RESIZABLE);
-        
-  if ( screen == NULL )
-  {
-    printf( "SDL_SetVideoMode: %s\n", SDL_GetError() );
-  }
-  
-  SDL_WM_SetCaption( "Conway's Game of Life", NULL);
-
-  image = loadSurface(IMG_CELL);
-  bgLight = loadSurface(BG_LIGHT);
-  bgDark = loadSurface(BG_DARK);
-    
-  if ( !image )
-  {
-    printf( "IMG_Load: %s\n", IMG_GetError() );
+    printf( "SDL failed to initialize! SDL_Error: %s\n", SDL_GetError() );
+    initialized = false;
   }
   else
   {
-
-#ifdef EMSCRIPTEN
-     scaledImage = image;
-#elif __MINGW32__
-    scaledImage = image;
-#else
-      scaledImage = rotozoomSurface(image, 0, ( float( CELL_SIZE ) / 16), 0);   // Scale cell image to cell size (16 is based on original png being 16px)
-      SDL_FreeSurface( image );   // Finished with image, can free it back up
-#endif 
-
-
+    if ( !SDL_SetHint( SDL_HINT_RENDER_SCALE_QUALITY, "1" ) )
+    {
+      printf( "Warning: Linear texture filtering not enabled!" );
+    }
+    
+    SDL_CreateWindowAndRenderer( BOARD_SIZE, BOARD_SIZE, SDL_WINDOW_RESIZABLE, &window, &renderer);
+  
+    if ( window == NULL )
+    {
+      printf( "SDL window could not be created! SDL_Error: %s\n", SDL_GetError() );
+      initialized = false;
+    }
+    else
+    {
+      if ( renderer == NULL )
+      {
+        printf( "SDL renderer could not be created! SDL_Error: %s\n", SDL_GetError() );
+        initialized = false;
+      }
+      else
+      {
+        SDL_SetRenderDrawColor( renderer, 0xFF, 0xFF, 0xFF, 0xFF );
+        
+        int imgFlags = IMG_INIT_PNG;
+        if( !( IMG_Init( imgFlags ) & imgFlags ) )
+        {
+          printf( "SDL_image could not initialize! SDL_image Error: %s\n", IMG_GetError() );
+          initialized = false;
+        }
+      }
+    }
   }
+  return initialized;
+}
 
-  spawn();    // spawn initial cell data
-  draw();     // draw the initial board
+void quit()
+{
+  SDL_DestroyTexture( cell );
+  SDL_DestroyTexture( bg_light );
+  SDL_DestroyTexture( bg_dark );
+  
+  SDL_DestroyRenderer( renderer );
+  SDL_DestroyWindow( window );
+  renderer = NULL;
+  window = NULL;
+  
+  IMG_Quit();
+  SDL_Quit();
+}
 
+bool loadAssets()
+{
+  bool loaded = true;
+  
+  cell = loadTexture( IMG_CELL );
+  if ( cell == NULL )
+  {
+    printf( "Failed to load %s\n", IMG_CELL );
+    loaded = false;
+  }
+  
+  bg_light = loadTexture( BG_LIGHT );
+  if ( bg_light == NULL )
+  {
+    printf( "Failed to load %s\n", BG_LIGHT );
+    loaded = false;
+  }
+  
+  bg_dark = loadTexture( BG_DARK);
+  if ( bg_dark == NULL )
+  {
+    printf( "Failed to load %s\n", BG_DARK );
+    loaded = false;
+  }
+  return loaded;
+}
+
+void spawn()
+{
+  // fill the array with random cells
+  int rando = 0;
+  //#ifndef __MINGW32__
+  srand(( unsigned )time( NULL ));
+  //#else
+  //  srand( ( unsigned ) GetSystemTime() );
+  //#endif
+  
+  for ( int x = 0; x < BOARD_SIZE / CELL_SIZE; x++ )
+  {
+    for ( int y = 0; y < BOARD_SIZE / CELL_SIZE; y++ )
+    {
+      rando = rand() % 2;
+      grid[x][y] = rando;
+      if ( DEBUGINFO ){ cout<<"Setting square at "<<x<<","<<y<<" to "<<grid[x][y]<<"\n"; }
+    }
+  }
 }
 
 void mainloop()
 {
     handleEvents();
     update();
-    draw();
+    draw(TEXTURES);
 }
 
 void handleEvents()
@@ -172,6 +214,7 @@ void handleEvents()
         running = false;    // exit the program
       }
     }
+  
 }
 
 void update()
@@ -180,8 +223,7 @@ void update()
     // 1. Any live cell with fewer than two live neighbours dies, as if caused by under-population.
     // 2. Any live cell with two or three live neighbours lives on to the next generation.
     // 3. Any live cell with more than three live neighbours dies, as if by overcrowding.
-    // 4. Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.
-  
+    // 4. Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction
   
     for ( int x = 0; x < BOARD_SIZE / CELL_SIZE; x++ )
     {
@@ -214,76 +256,55 @@ void update()
     {
         for ( int y = 0; y < BOARD_SIZE / CELL_SIZE; y++ )
         {
-            prevGrid[x][y] = grid[x][y];
             grid[x][y] = bufferGrid[x][y];
         }
     }
 }
 
-void draw()
+void draw(bool textures)
 {
-  for ( int x = 0; x < BOARD_SIZE / CELL_SIZE; x++ )
+  SDL_SetRenderDrawColor( renderer, 0x00, 0x00, 0x00, 0x00 );
+  SDL_RenderClear( renderer );
+  
+  if (textures)
   {
-    for ( int y = 0; y < BOARD_SIZE / CELL_SIZE; y++ )
+  
+    for ( int x = 0; x < BOARD_SIZE / CELL_SIZE; x++ )
     {
-      SDL_Rect offset;
-      offset.x = x * CELL_SIZE;
-      offset.y = y * CELL_SIZE;
-      
-      if ( grid[x][y] == 1)
+      for ( int y = 0; y < BOARD_SIZE / CELL_SIZE; y++ )
       {
-        SDL_BlitSurface( scaledImage, NULL, screen, &offset );
-      }
-      else
-      {
-        if ( y % 2 != 0 && x % 2 == 0 )
-          SDL_BlitSurface( bgDark, NULL, screen, &offset );
+        SDL_Rect rect = {x * CELL_SIZE, y * CELL_SIZE, CELL_SIZE, CELL_SIZE};
+        if ( grid[x][y] == 1)
+        {
+          SDL_RenderCopy(renderer, cell, NULL, &rect);
+        }
         else
-          SDL_BlitSurface( bgLight, NULL, screen, &offset );
+        {
+        if ( y % 2 != 0 && x % 2 == 0 )
+          SDL_RenderCopy(renderer, bg_dark, NULL, &rect);
+        else
+          SDL_RenderCopy(renderer, bg_light, NULL, &rect);
+        }
       }
     }
   }
-  SDL_Flip( screen );
-}
-
-void filldraw()
-{
-  for ( int x = 0; x < BOARD_SIZE / CELL_SIZE; x++ )
+  else
   {
-    for ( int y = 0; y < BOARD_SIZE / CELL_SIZE; y++ )
-    {
-      if ( grid[x][y] == 1 )
-      {
-        fillCell(x * CELL_SIZE, y * CELL_SIZE, CELL_SIZE, CELL_SIZE, SDL_MapRGB(screen->format,255,0,0));
-      }
-      else
-      {
-        fillCell(x * CELL_SIZE, y * CELL_SIZE , CELL_SIZE, CELL_SIZE, SDL_MapRGB(screen->format,0,0,0));
-      }
-    }
-  }
-  SDL_Flip(screen);
-}
 
-void spawn()
-{
-  // fill the array with random cells
-  int rando = 0;
-//#ifndef __MINGW32__
-  srand(( unsigned )time( NULL ));
-//#else
-//  srand( ( unsigned ) GetSystemTime() );
-//#endif
     
-  for ( int x = 0; x < BOARD_SIZE / CELL_SIZE; x++ )
-  {
-    for ( int y = 0; y < BOARD_SIZE / CELL_SIZE; y++ )
+    for ( int x = 0; x < BOARD_SIZE / CELL_SIZE; x++ )
     {
-      rando = rand() % 2;
-      grid[x][y] = rando;
-      if ( DEBUGINFO ){ cout<<"Setting square at "<<x<<","<<y<<" to "<<grid[x][y]<<"\n"; }
+      for ( int y = 0; y < BOARD_SIZE / CELL_SIZE; y++ )
+      {
+        if ( grid[x][y] == 1 )
+        {
+          drawCell(x * CELL_SIZE, y * CELL_SIZE, CELL_SIZE, CELL_SIZE, 0xFF, 0x00, 0x00, 0xFF);
+        }
+      }
     }
   }
+
+  SDL_RenderPresent( renderer );
 }
 
 int checkNeighbors( int x, int y )
@@ -307,16 +328,19 @@ int checkNeighbors( int x, int y )
     return ncount;
 }
 
-void fillCell( Sint16 x, Sint16 y, Uint16 w, Uint16 h, Uint32 color )
+void drawCell( Sint16 x, Sint16 y, Uint16 w, Uint16 h, Uint8 r, Uint8 g, Uint8 b, Uint8 a)
 {
-    SDL_Rect rect = { x,y,w,h };
-    SDL_FillRect( screen, &rect, color );
+  
+  SDL_Rect rect = {x, y, w, h};
+  SDL_SetRenderDrawColor( renderer, r, g, b, a );
+  SDL_RenderFillRect( renderer, &rect );
+
 }
 
-SDL_Surface* loadSurface( std::string path )
+SDL_Texture* loadTexture( std::string path )
 {
-  //The final optimized image
-  SDL_Surface* optimizedSurface = NULL;
+  //The final texture
+  SDL_Texture* newTexture = NULL;
   
   //Load image at specified path
   SDL_Surface* loadedSurface = IMG_Load( path.c_str() );
@@ -326,14 +350,48 @@ SDL_Surface* loadSurface( std::string path )
   }
   else
   {
-    //Convert surface to screen format
-    optimizedSurface = SDL_ConvertSurface( loadedSurface, screen->format, NULL );
-    if( optimizedSurface == NULL )
+    //Create texture from surface pixels
+    newTexture = SDL_CreateTextureFromSurface( renderer, loadedSurface );
+    if( newTexture == NULL )
     {
-      printf( "Unable to optimize image %s! SDL Error: %s\n", path.c_str(), SDL_GetError() );
+      printf( "Unable to create texture from %s! SDL Error: %s\n", path.c_str(), SDL_GetError() );
     }
+    
     //Get rid of old loaded surface
     SDL_FreeSurface( loadedSurface );
   }
-  return optimizedSurface;
+  
+  return newTexture;
+}
+
+int main ( int argc, char **argv )
+{
+  if ( !init() )
+  {
+    printf( "Failed to initialize!\n" );
+  }
+  else
+  {
+    if ( !loadAssets() )
+    {
+      printf ( "Failed to load assets!\n" );
+    }
+    else
+    {
+      spawn();
+  
+#ifdef EMSCRIPTEN
+      emscripten_set_main_loop(mainloop, 10, 1);;
+#else
+      while ( running && generation < 1000)
+      {
+        mainloop();
+        generation++;
+        SDL_Delay( 100 );   // wait .5 seconds
+      }
+#endif
+    }
+  }
+  quit();
+  return 0;
 }
