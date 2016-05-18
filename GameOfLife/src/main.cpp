@@ -8,9 +8,13 @@
 
 #include <iostream>
 #include <time.h>
+#include <sstream>
 
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
+#include <SDL2/SDL_ttf.h>
+
+#include "timer.h"
 
 #ifndef __MINGW32__
 //#include "SDL/SDL_rotozoom.h"
@@ -29,8 +33,10 @@ using namespace std;
 #define TEXTURES 1
 
 #define CELL_SIZE 16         // length and width (in pixels) for the square cells
-#define BOARD_SIZE 800     // Length and width for the square viewing area
+#define BOARD_SIZE 1600     // Length and width for the square viewing area
 #define SCREEN_BPP 32       // Screen bits per-pixels
+const int SCREEN_FPS = 60;
+const int SCREEN_TICKS_PER_FRAME = 1000 / SCREEN_FPS;
 
 #ifdef APP
 #define IMG_CELL "GameOfLife.app/Contents/Resources/img/pink.png"
@@ -50,6 +56,7 @@ bool running = true;
 int grid[BOARD_SIZE / CELL_SIZE][BOARD_SIZE / CELL_SIZE];
 int bufferGrid[BOARD_SIZE / CELL_SIZE][BOARD_SIZE / CELL_SIZE];
 int generation = 0;
+int framecount = 0;
 
 bool init();
 void quit();
@@ -75,6 +82,8 @@ SDL_Texture *cell = NULL;
 SDL_Texture *bg_light = NULL;
 SDL_Texture *bg_dark = NULL;
 SDL_Event event;
+Timer fpsTimer;
+Timer frameticks;
 
 bool init()
 {
@@ -91,7 +100,7 @@ bool init()
       printf( "Warning: Linear texture filtering not enabled!" );
     }
     
-    SDL_CreateWindowAndRenderer( BOARD_SIZE, BOARD_SIZE, SDL_WINDOW_RESIZABLE, &window, &renderer);
+    SDL_CreateWindowAndRenderer( BOARD_SIZE, BOARD_SIZE, SDL_WINDOW_RESIZABLE | SDL_RENDERER_ACCELERATED, &window, &renderer);
     SDL_SetWindowTitle( window, "Conway's Game of Life by Fielding");
     
     if ( window == NULL )
@@ -187,6 +196,14 @@ void spawn()
 
 void mainloop()
 {
+  float avgFPS = framecount / ( fpsTimer.getTicks() / 1000.f );
+  if ( avgFPS > 2000000)
+  {
+    avgFPS = 0;
+  }
+  
+  printf( "Average Frames Per Second %f\n", avgFPS);
+  
     handleEvents();
     update();
     draw(TEXTURES);
@@ -203,9 +220,15 @@ void handleEvents()
           case SDLK_ESCAPE:   // If key pressed was escape
             running = false;      // exit the program
             break;
+          
           case SDLK_UP:       // If key pressed was up arrow
             break;
+          
           case SDLK_DOWN:     // If key pressed was down arrow
+            break;
+          
+          case SDLK_f:
+            //  toggleFPS();
             break;
           default:            // default for undefined keys
             break;
@@ -260,6 +283,7 @@ void update()
             grid[x][y] = bufferGrid[x][y];
         }
     }
+  generation++;
 }
 
 void draw(bool textures)
@@ -306,6 +330,7 @@ void draw(bool textures)
   }
 
   SDL_RenderPresent( renderer );
+  framecount++;
 }
 
 int checkNeighbors( int x, int y )
@@ -379,16 +404,23 @@ int main ( int argc, char **argv )
     }
     else
     {
-      spawn();
+      spawn();;
+      std::stringstream fpsText;
+      fpsTimer.start();
+      framecount = 0;
   
 #ifdef EMSCRIPTEN
       emscripten_set_main_loop(mainloop, 10, 1);;
 #else
-      while ( running && generation < 1000)
+      while ( running )
       {
+        frameticks.start();
         mainloop();
-        generation++;
-        SDL_Delay( 100 );   // wait .5 seconds
+        int ticks = frameticks.getTicks();
+        if ( ticks < SCREEN_TICKS_PER_FRAME )
+        {
+          SDL_Delay( SCREEN_TICKS_PER_FRAME - ticks );
+        }
       }
 #endif
     }
