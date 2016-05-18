@@ -28,8 +28,8 @@ using namespace std;
 #define DEBUGINFO 0
 #define TEXTURES 1
 
-#define CELL_SIZE 8         // length and width (in pixels) for the square cells
-#define BOARD_SIZE 1600     // Length and width for the square viewing area
+#define CELL_SIZE 16         // length and width (in pixels) for the square cells
+#define BOARD_SIZE 800     // Length and width for the square viewing area
 #define SCREEN_BPP 32       // Screen bits per-pixels
 
 #ifdef APP
@@ -92,7 +92,8 @@ bool init()
     }
     
     SDL_CreateWindowAndRenderer( BOARD_SIZE, BOARD_SIZE, SDL_WINDOW_RESIZABLE, &window, &renderer);
-  
+    SDL_SetWindowTitle( window, "Conway's Game of Life by Fielding");
+    
     if ( window == NULL )
     {
       printf( "SDL window could not be created! SDL_Error: %s\n", SDL_GetError() );
