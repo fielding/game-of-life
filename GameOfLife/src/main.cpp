@@ -27,7 +27,7 @@ using namespace std;
 
 #define DEBUGINFO 0
 
-#define CELL_SIZE 16         // length and width (in pixels) for the square cells
+#define CELL_SIZE 8         // length and width (in pixels) for the square cells
 #define BOARD_SIZE 800     // Length and width for the square viewing area
 #define SCREEN_BPP 32       // Screen bits per-pixels
 
