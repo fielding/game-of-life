@@ -13,7 +13,7 @@ ASSET_DIR=assets/
 IMG_DIR=img/
 ICON_DIR=icn/
 
-PRELOADED=--preload-file $(ASSET_DIR)$(IMG_DIR)creep.png --preload-file $(ASSET_DIR)$(IMG_DIR)bglight.png --preload-file $(ASSET_DIR)$(IMG_DIR)bgdark.png
+PRELOADED=--preload-file $(ASSET_DIR)$(IMG_DIR)pink.png --preload-file $(ASSET_DIR)$(IMG_DIR)bglight.png --preload-file $(ASSET_DIR)$(IMG_DIR)bgdark.png
 PREJS=pre.js
 
 CPPFLAGS += $(shell pkg-config --cflags sdl SDL_image SDL_gfx)
@@ -34,7 +34,7 @@ OSX_APP:
 	mkdir -p $(BIN)$(OUTPUT).app/Contents/PlugIns
 	mkdir -p $(BIN)$(OUTPUT).app/Contents/SharedFrameWorks
 	cp Info.plist $(BIN)$(OUTPUT).app/Contents/Info.plist
-	cp $(ASSET_DIR)$(IMG_DIR)creep.png $(BIN)$(OUTPUT).app/Contents/Resources/img/creep.png
+	cp $(ASSET_DIR)$(IMG_DIR)pink.png $(BIN)$(OUTPUT).app/Contents/Resources/img/pink.png
 	cp $(ASSET_DIR)$(IMG_DIR)bglight.png $(BIN)$(OUTPUT).app/Contents/Resources/img/bglight.png
 	cp $(ASSET_DIR)$(IMG_DIR)bgdark.png $(BIN)$(OUTPUT).app/Contents/Resources/img/bgdark.png
 	cp $(ASSET_DIR)$(ICON_DIR)creep.icns $(BIN)$(OUTPUT).app/Contents/Resources/creep.icns
@@ -48,7 +48,7 @@ WIN:
 	cp $(SDL_MINGW_DLLS)SDL_image.dll $(BIN)win/SDL_image.dll
 	cp $(SDL_MINGW_DLLS)libpng15-15.dll $(BIN)win/libpng15-15.dll
 	cp $(SDL_MINGW_DLLS)zlib1.dll $(BIN)win/zlib1.dll
-	cp $(ASSET_DIR)$(IMG_DIR)creep.png $(BIN)win/creep.png
+	cp $(ASSET_DIR)$(IMG_DIR)pink.png $(BIN)win/pink.png
 	cp $(ASSET_DIR)$(IMG_DIR)bglight.png $(BIN)win/bglight.png
 	cp $(ASSET_DIR)$(IMG_DIR)bgdark.png $(BIN)win/bgdark.png
 
