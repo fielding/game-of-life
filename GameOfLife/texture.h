@@ -10,6 +10,7 @@
 #define texture_hpp
 
 #include <stdio.h>
+#include <string>
 
 class Texture
 {
@@ -17,9 +18,18 @@ public:
   Texture();
   ~Texture();
 
-  bool loadFromFile( std::string path );
+  bool loadFromFile( std::string path, SDL_Renderer* renderer);
+  
   void free();
-  void render( int x, int y, SDL_Rect* clip = NULL );
+  void render( int x, int y, SDL_Renderer* renderer, SDL_Rect* clip = NULL );
+  
+  int getWidth();
+  int getHeight();
+  
+private:
+  SDL_Texture* mTexture;
+  int mWidth;
+  int mHeight;
   
 };
 

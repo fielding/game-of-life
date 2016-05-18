@@ -15,6 +15,7 @@
 #include <SDL2/SDL_ttf.h>
 
 #include "timer.h"
+#include "texture.h"
 
 #ifndef __MINGW32__
 //#include "SDL/SDL_rotozoom.h"
@@ -78,10 +79,11 @@ SDL_Texture* loadTexture(std::string path);
 // SDL Objects
 SDL_Window *window = NULL;
 SDL_Renderer *renderer = NULL;
-SDL_Texture *cell = NULL;
-SDL_Texture *bg_light = NULL;
-SDL_Texture *bg_dark = NULL;
 SDL_Event event;
+
+Texture cell;
+Texture bg_light;
+Texture bg_dark;
 Timer fpsTimer;
 Timer frameticks;
 
@@ -133,9 +135,9 @@ bool init()
 
 void quit()
 {
-  SDL_DestroyTexture( cell );
-  SDL_DestroyTexture( bg_light );
-  SDL_DestroyTexture( bg_dark );
+  cell.free();
+  bg_light.free();
+  bg_dark.free();
   
   SDL_DestroyRenderer( renderer );
   SDL_DestroyWindow( window );
@@ -150,22 +152,19 @@ bool loadAssets()
 {
   bool loaded = true;
   
-  cell = loadTexture( IMG_CELL );
-  if ( cell == NULL )
+  if ( !cell.loadFromFile( IMG_CELL, renderer ) )
   {
     printf( "Failed to load %s\n", IMG_CELL );
     loaded = false;
   }
-  
-  bg_light = loadTexture( BG_LIGHT );
-  if ( bg_light == NULL )
+
+  if ( !bg_light.loadFromFile( BG_LIGHT, renderer ) )
   {
     printf( "Failed to load %s\n", BG_LIGHT );
     loaded = false;
   }
   
-  bg_dark = loadTexture( BG_DARK);
-  if ( bg_dark == NULL )
+  if ( !bg_dark.loadFromFile( BG_DARK, renderer ) )
   {
     printf( "Failed to load %s\n", BG_DARK );
     loaded = false;
@@ -298,17 +297,21 @@ void draw(bool textures)
     {
       for ( int y = 0; y < BOARD_SIZE / CELL_SIZE; y++ )
       {
-        SDL_Rect rect = {x * CELL_SIZE, y * CELL_SIZE, CELL_SIZE, CELL_SIZE};
         if ( grid[x][y] == 1)
         {
-          SDL_RenderCopy(renderer, cell, NULL, &rect);
+          cell.render(x * CELL_SIZE, y * CELL_SIZE, renderer);
         }
         else
         {
         if ( y % 2 != 0 && x % 2 == 0 )
-          SDL_RenderCopy(renderer, bg_dark, NULL, &rect);
+        {
+          bg_dark.render(x * CELL_SIZE, y * CELL_SIZE, renderer);
+        }
         else
-          SDL_RenderCopy(renderer, bg_light, NULL, &rect);
+        {
+          bg_light.render(x * CELL_SIZE, y * CELL_SIZE, renderer);
+        }
+
         }
       }
     }
@@ -361,33 +364,6 @@ void drawCell( Sint16 x, Sint16 y, Uint16 w, Uint16 h, Uint8 r, Uint8 g, Uint8 b
   SDL_SetRenderDrawColor( renderer, r, g, b, a );
   SDL_RenderFillRect( renderer, &rect );
 
-}
-
-SDL_Texture* loadTexture( std::string path )
-{
-  //The final texture
-  SDL_Texture* newTexture = NULL;
-  
-  //Load image at specified path
-  SDL_Surface* loadedSurface = IMG_Load( path.c_str() );
-  if( loadedSurface == NULL )
-  {
-    printf( "Unable to load image %s! SDL_image Error: %s\n", path.c_str(), IMG_GetError() );
-  }
-  else
-  {
-    //Create texture from surface pixels
-    newTexture = SDL_CreateTextureFromSurface( renderer, loadedSurface );
-    if( newTexture == NULL )
-    {
-      printf( "Unable to create texture from %s! SDL Error: %s\n", path.c_str(), SDL_GetError() );
-    }
-    
-    //Get rid of old loaded surface
-    SDL_FreeSurface( loadedSurface );
-  }
-  
-  return newTexture;
 }
 
 int main ( int argc, char **argv )
