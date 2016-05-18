@@ -27,9 +27,9 @@ using namespace std;
 
 #define DEBUGINFO 0
 
-#define CELL_SIZE 8        // length and width (in pixels) for the square cells
-#define BOARD_SIZE 800    // Length and width for the square viewing area
-#define SCREEN_BPP 32      // Screen bits per-pixels
+#define CELL_SIZE 16         // length and width (in pixels) for the square cells
+#define BOARD_SIZE 800     // Length and width for the square viewing area
+#define SCREEN_BPP 32       // Screen bits per-pixels
 
 
 
@@ -49,6 +49,7 @@ using namespace std;
 
 bool running = true;
 
+int prevGrid[BOARD_SIZE / CELL_SIZE][BOARD_SIZE / CELL_SIZE];
 int grid[BOARD_SIZE / CELL_SIZE][BOARD_SIZE / CELL_SIZE];       // Create a grid based on total board size and each cell size
 int bufferGrid[BOARD_SIZE / CELL_SIZE][BOARD_SIZE / CELL_SIZE];
 
@@ -57,12 +58,15 @@ void init();
 void handleEvents();
 void update();
 void draw();
+void filldraw();
 
 void mainloop(); // main loop wrapper for Emscripten
 
 void spawn();
 int checkNeighbors( int x, int y );
+
 void fillCell( Sint16 x, Sint16 y, Uint16 w, Uint16 h, Uint32 color );
+SDL_Surface* loadSurface(std::string path);
 
 // SDL Objects
 SDL_Surface *screen = NULL;
@@ -110,9 +114,9 @@ void init()
   
   SDL_WM_SetCaption( "Conway's Game of Life", NULL);
 
-  image = IMG_Load(IMG_CELL);
-  bgLight = IMG_Load(BG_LIGHT);
-  bgDark = IMG_Load(BG_DARK);
+  image = loadSurface(IMG_CELL);
+  bgLight = loadSurface(BG_LIGHT);
+  bgDark = loadSurface(BG_DARK);
     
   if ( !image )
   {
@@ -210,6 +214,7 @@ void update()
     {
         for ( int y = 0; y < BOARD_SIZE / CELL_SIZE; y++ )
         {
+            prevGrid[x][y] = grid[x][y];
             grid[x][y] = bufferGrid[x][y];
         }
     }
@@ -225,7 +230,7 @@ void draw()
       offset.x = x * CELL_SIZE;
       offset.y = y * CELL_SIZE;
       
-      if ( grid[x][y] == 1 )
+      if ( grid[x][y] == 1)
       {
         SDL_BlitSurface( scaledImage, NULL, screen, &offset );
       }
@@ -238,7 +243,26 @@ void draw()
       }
     }
   }
-    SDL_Flip( screen );
+  SDL_Flip( screen );
+}
+
+void filldraw()
+{
+  for ( int x = 0; x < BOARD_SIZE / CELL_SIZE; x++ )
+  {
+    for ( int y = 0; y < BOARD_SIZE / CELL_SIZE; y++ )
+    {
+      if ( grid[x][y] == 1 )
+      {
+        fillCell(x * CELL_SIZE, y * CELL_SIZE, CELL_SIZE, CELL_SIZE, SDL_MapRGB(screen->format,255,0,0));
+      }
+      else
+      {
+        fillCell(x * CELL_SIZE, y * CELL_SIZE , CELL_SIZE, CELL_SIZE, SDL_MapRGB(screen->format,0,0,0));
+      }
+    }
+  }
+  SDL_Flip(screen);
 }
 
 void spawn()
@@ -287,4 +311,29 @@ void fillCell( Sint16 x, Sint16 y, Uint16 w, Uint16 h, Uint32 color )
 {
     SDL_Rect rect = { x,y,w,h };
     SDL_FillRect( screen, &rect, color );
+}
+
+SDL_Surface* loadSurface( std::string path )
+{
+  //The final optimized image
+  SDL_Surface* optimizedSurface = NULL;
+  
+  //Load image at specified path
+  SDL_Surface* loadedSurface = IMG_Load( path.c_str() );
+  if( loadedSurface == NULL )
+  {
+    printf( "Unable to load image %s! SDL_image Error: %s\n", path.c_str(), IMG_GetError() );
+  }
+  else
+  {
+    //Convert surface to screen format
+    optimizedSurface = SDL_ConvertSurface( loadedSurface, screen->format, NULL );
+    if( optimizedSurface == NULL )
+    {
+      printf( "Unable to optimize image %s! SDL Error: %s\n", path.c_str(), SDL_GetError() );
+    }
+    //Get rid of old loaded surface
+    SDL_FreeSurface( loadedSurface );
+  }
+  return optimizedSurface;
 }
