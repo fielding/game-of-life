@@ -59,6 +59,7 @@ const int SCREEN_TICKS_PER_FRAME = 1000 / SCREEN_FPS;
 #endif
 
 bool running = true;
+bool showFPS = false;
 int grid[BOARD_SIZE / CELL_SIZE][BOARD_SIZE / CELL_SIZE];
 int bufferGrid[BOARD_SIZE / CELL_SIZE][BOARD_SIZE / CELL_SIZE];
 int generation = 0;
@@ -110,7 +111,7 @@ bool init()
       printf( "Warning: Linear texture filtering not enabled!" );
     }
     
-    SDL_CreateWindowAndRenderer( BOARD_SIZE, BOARD_SIZE, SDL_WINDOW_RESIZABLE | SDL_RENDERER_ACCELERATED, &window, &renderer);
+    SDL_CreateWindowAndRenderer( BOARD_SIZE, BOARD_SIZE, SDL_WINDOW_RESIZABLE, &window, &renderer);
     SDL_SetWindowTitle( window, "Conway's Game of Life by Fielding");
     
     if ( window == NULL )
@@ -251,7 +252,14 @@ void handleEvents()
             break;
           
           case SDLK_f:
-            //  toggleFPS();
+            if ( showFPS )
+            {
+              showFPS = false;
+            }
+            else
+            {
+              showFPS = true;
+            }
             break;
           default:            // default for undefined keys
             break;
@@ -355,7 +363,10 @@ void draw(bool textures)
       }
     }
   }
-  fpsTextTexture.render( ( BOARD_SIZE - fpsTextTexture.getWidth() ) /  2, (BOARD_SIZE - fpsTextTexture.getHeight() ) / 2, renderer);
+  if (showFPS)
+  {
+    fpsTextTexture.render( ( BOARD_SIZE - fpsTextTexture.getWidth() ) /  2, (BOARD_SIZE - fpsTextTexture.getHeight() ) / 2, renderer);
+  }
   
   SDL_RenderPresent( renderer );
   framecount++;
