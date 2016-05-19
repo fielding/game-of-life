@@ -36,8 +36,6 @@ using namespace std;
 #define CELL_SIZE 16         // length and width (in pixels) for the square cells
 #define BOARD_SIZE 1600     // Length and width for the square viewing area
 #define SCREEN_BPP 32       // Screen bits per-pixels
-const int SCREEN_FPS = 60;
-const int SCREEN_TICKS_PER_FRAME = 1000 / SCREEN_FPS;
 
 #ifdef APP
 #define IMG_CELL "GameOfLife.app/Contents/Resources/img/pink.png"
@@ -60,6 +58,8 @@ const int SCREEN_TICKS_PER_FRAME = 1000 / SCREEN_FPS;
 
 bool running = true;
 bool showFPS = false;
+// Generations/updates per second
+int genPerSec = 12;
 int grid[BOARD_SIZE / CELL_SIZE][BOARD_SIZE / CELL_SIZE];
 int bufferGrid[BOARD_SIZE / CELL_SIZE][BOARD_SIZE / CELL_SIZE];
 int generation = 0;
@@ -110,10 +110,7 @@ bool init()
     {
       printf( "Warning: Linear texture filtering not enabled!" );
     }
-    
-    SDL_CreateWindowAndRenderer( BOARD_SIZE, BOARD_SIZE, SDL_WINDOW_RESIZABLE, &window, &renderer);
-    SDL_SetWindowTitle( window, "Conway's Game of Life by Fielding");
-    
+    window = SDL_CreateWindow( "Conway's Game of Life by Fielding", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, BOARD_SIZE, BOARD_SIZE, SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE);
     if ( window == NULL )
     {
       printf( "SDL window could not be created! SDL_Error: %s\n", SDL_GetError() );
@@ -121,6 +118,7 @@ bool init()
     }
     else
     {
+      renderer = SDL_CreateRenderer( window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC );
       if ( renderer == NULL )
       {
         printf( "SDL renderer could not be created! SDL_Error: %s\n", SDL_GetError() );
@@ -335,15 +333,14 @@ void draw(bool textures)
         }
         else
         {
-        if ( y % 2 != 0 && x % 2 == 0 )
-        {
-          bg_dark.render(x * CELL_SIZE, y * CELL_SIZE, renderer);
-        }
-        else
-        {
-          bg_light.render(x * CELL_SIZE, y * CELL_SIZE, renderer);
-        }
-
+          if ( y % 2 != 0 && x % 2 == 0 )
+          {
+            bg_dark.render(x * CELL_SIZE, y * CELL_SIZE, renderer);
+          }
+          else
+          {
+            bg_light.render(x * CELL_SIZE, y * CELL_SIZE, renderer);
+          }
         }
       }
     }
@@ -428,11 +425,6 @@ int main ( int argc, char **argv )
       {
         frameticks.start();
         mainloop();
-        int ticks = frameticks.getTicks();
-        if ( ticks < SCREEN_TICKS_PER_FRAME )
-        {
-          SDL_Delay( SCREEN_TICKS_PER_FRAME - ticks );
-        }
       }
 #endif
     }
